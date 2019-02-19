@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.List;
+import java.util.Arrays;
 
 public class PlayerClient {
     String playerName;
@@ -56,6 +58,19 @@ public class PlayerClient {
                 clientPrintWriter.flush();
             }
         });
+
+        // Evento para enviar a palavra do jogo para o oponente
+        board.sendGameWordButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Formato wordfirstPlayer,casa
+                clientPrintWriter.println("word"+ playerName + "," + board.selectedWord.getText());
+                clientPrintWriter.flush();
+                board.selectedWord.setText("");
+                board.selectedWord.requestFocus();
+                board.sendGameWordButton.setEnabled(false);
+            }
+        });
     }
 
     private void setupConnection() {
@@ -70,12 +85,12 @@ public class PlayerClient {
 
     private void play() {
         board.diceButton.setEnabled(true);
-        board.finishTurnButton.setEnabled(true);
+        board.sendGameWordButton.setEnabled(true);
     }
 
     private void waitTurn() {
         board.diceButton.setEnabled(false);
-        board.finishTurnButton.setEnabled(false);
+        board.sendGameWordButton.setEnabled(false);
     }
 
     private void updateBoardPosition(String message) {
@@ -92,6 +107,15 @@ public class PlayerClient {
         // Posiciona o 1 e 2 no tabuleiro
         board.boardLetters[firstPosition].setText(board.boardLetters[firstPosition].getText() + " (1)");
         board.boardLetters[secondPosition].setText(board.boardLetters[secondPosition].getText() + " (2)");
+    }
+
+    private void updateAllLetters(String message) {
+        String[] messageArray = message.split(":");
+        List <String> myLetters =  Arrays.asList(messageArray[0].split(","));
+        List <String> opponentsLetters =  Arrays.asList(messageArray[1].split(","));
+
+        board.updateMyLetters(myLetters);
+        board.updateOponentsLetters(opponentsLetters);
     }
 
     private class ServerListener implements Runnable {
@@ -127,6 +151,11 @@ public class PlayerClient {
                     case "dice":
                         updateBoardPosition(messageWithoutBegin);
                         break;
+
+                    case "word":
+                        updateAllLetters(messageWithoutBegin);
+                        break;
+
                 }
             }
         }

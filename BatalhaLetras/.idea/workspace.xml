@@ -4,11 +4,8 @@
     <list default="true" id="59406e58-9b5c-411c-b7ac-395bb8321b1e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$ServerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$ServerListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server$ClientListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server$ClientListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/sockets/Board.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/sockets/Board.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/sockets/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/sockets/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" afterDir="false" />
@@ -31,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="146" column="28" lean-forward="true" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+            <state relative-caret-position="178">
+              <caret line="164" column="45" lean-forward="true" selection-start-line="164" selection-start-column="45" selection-end-line="164" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,25 +42,24 @@
           <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="120" column="62" selection-start-line="120" selection-start-column="62" selection-end-line="120" selection-end-column="62" />
+            <state relative-caret-position="1743">
+              <caret line="164" column="64" selection-start-line="164" selection-start-column="64" selection-end-line="164" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#434#435#0" expanded="true" />
-                <element signature="e#467#468#0" expanded="true" />
+                <element signature="e#5732#5740#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="215">
+              <caret line="67" column="42" lean-forward="true" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,17 +93,17 @@
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/Tabuleiro.java" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient2.java" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerServer.java" />
-        <option value="$PROJECT_DIR$/src/com/ppd/sockets/Board.form" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/Board.java" />
-        <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" />
+        <option value="$PROJECT_DIR$/src/com/ppd/sockets/Board.form" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="710" />
+    <option name="width" value="763" />
+    <option name="height" value="708" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -116,6 +112,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,7 +135,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -148,7 +144,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="288" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550549296295" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550612300485" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
@@ -233,17 +229,18 @@
       <workItem from="1550438474511" duration="1661000" />
       <workItem from="1550440383446" duration="20097000" />
       <workItem from="1550539341220" duration="8963000" />
+      <workItem from="1550602985380" duration="7182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30721000" />
+    <option name="totallyTimeSpent" value="37903000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="706" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="708" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08984375" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.0234375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -252,8 +249,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34150326" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4591503" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18729642" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.25570032" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -277,6 +274,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java</url>
+          <line>155</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Tabuleiro.class" />
@@ -306,37 +315,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="164" column="45" lean-forward="true" selection-start-line="164" selection-start-column="45" selection-end-line="164" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Board.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="146" column="28" lean-forward="true" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+        <state relative-caret-position="1743">
+          <caret line="164" column="64" selection-start-line="164" selection-start-column="64" selection-end-line="164" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5732#5740#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+        <state relative-caret-position="215">
+          <caret line="67" column="42" lean-forward="true" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="120" column="62" selection-start-line="120" selection-start-column="62" selection-end-line="120" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#434#435#0" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
           </folding>
         </state>
       </provider>

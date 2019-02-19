@@ -3,6 +3,7 @@ import java.net.Socket;
 import java.net.ServerSocket;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class Server {
     Socket currentPlayer;
     int firstPlayerPosition = 0;
     int secondPlayerPosition = 0;
+    String[] firstPlayerLetters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    String[] secondPlayerLetters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
     public static void main(String[] args) {
         new Server();
@@ -74,12 +77,19 @@ public class Server {
                 String messageWithoutBegin = text.substring(4);
 
                 switch (messageBegin) {
-                    case "chat": sendMessageToAll("chat"+messageWithoutBegin);
-                                 break;
+                    case "chat":
+                        sendMessageToAll("chat"+messageWithoutBegin);
+                         break;
 
-                    case "dice": calculatePosition(messageWithoutBegin);
-                                 sendMessageToAll("dicefirstPlayer" + firstPlayerPosition + "," + "secondPlayer" + secondPlayerPosition);
-                                 break;
+                    case "dice":
+                        calculatePosition(messageWithoutBegin);
+                         sendMessageToAll("dicefirstPlayer" + firstPlayerPosition + "," + "secondPlayer" + secondPlayerPosition);
+                         break;
+
+                    case "word":
+                        updatePlayersLetters(messageWithoutBegin);
+                        break;
+
                 }
             }
         }
@@ -117,6 +127,17 @@ public class Server {
         }
     }
 
+    // Envia uma mensagem direcionada para um player
+    private void sendMessageToSocket(Socket player, String message) {
+        try {
+            PrintWriter w = new PrintWriter(player.getOutputStream());
+            w.println(message);
+            w.flush();
+        } catch (Exception e) {
+
+        }
+    }
+
     private void calculatePosition(String message) {
         String position = message.substring(message.length() - 1);
 
@@ -127,5 +148,36 @@ public class Server {
             secondPlayerPosition += Integer.parseInt(position);
             sendMessageToAll("gameJogo: O Jogador 2 anda "+ position +  " casas!");
         }
+    }
+
+    private void updatePlayersLetters(String message) {
+        String[] messageArray = message.split(",");
+
+        // Apaga as letras descritas nos arrays dos jogadores
+        if (message.startsWith("f")) {
+            secondPlayerLetters = removeWordFromLetters(messageArray[1], secondPlayerLetters);
+        } else {
+            firstPlayerLetters = removeWordFromLetters(messageArray[1], firstPlayerLetters);
+        }
+
+        // Envia as mensagens de atualização
+        // Formato wordA,B,C,D:A,B,C,D onde antes do : são as letras do jogador e após são as letras do oponente
+        sendMessageToSocket(firstPlayer, "word" + String.join(",", firstPlayerLetters) + ":" + String.join(",", secondPlayerLetters));
+        sendMessageToSocket(secondPlayer, "word" + String.join(",", secondPlayerLetters) + ":" + String.join(",", firstPlayerLetters));
+    }
+
+    // Remove a palavra do array de letras
+    private String[] removeWordFromLetters(String word, String[] array) {
+        List<String> list = new ArrayList<String>(Arrays.asList(array));
+
+        for (char c: word.toCharArray()) {
+            for (String letter: array) {
+
+                if (Character.toString(Character.toUpperCase(c)).equals(letter)) {
+                    list.remove(letter);
+                }
+            }
+        }
+        return list.toArray(new String[0]);
     }
 }

@@ -73,8 +73,8 @@ public class Board {
     JButton diceButton;
     JTextArea boardLog;
     private JPanel boardLogPanel;
-    JButton finishTurnButton;
-    private JButton desistirDoJogoButton;
+    JButton sendGameWordButton;
+    private JButton giveUpGameButton;
     private JLabel aLabel;
     private JLabel bLabel;
     private JLabel cLabel;
@@ -101,8 +101,12 @@ public class Board {
     private JLabel xLabel;
     private JLabel yLabel;
     private JLabel zLabel;
+    JTextField selectedWord;
+    JButton passTurnButton;
 
     JLabel[] boardLetters;
+    JButton[] myGameLetters;
+    JButton[] oponentsGameLetters;
 
     public Board(String playerName) {
         JFrame frame = new JFrame("Batalha das Letras "+playerName);
@@ -119,6 +123,9 @@ public class Board {
 
         // Letras do tabuleiro principal
         boardLetters = new JLabel[]{aLabel, bLabel, cLabel, dLabel, eLabel, fLabel, gLabel, hLabel, iLabel, jLabel, kLabel, lLabel, mLabel, nLabel, oLabel, pLabel, qLabel, rLabel, sLabel, tLabel, uLabel, vLabel, wLabel, xLabel, yLabel, zLabel};
+        myGameLetters = new JButton[]{myAButton, myBButton, myCButton, myDButton, myEButton, myFButton, myGButton, myHButton, myIButton, myJButton, myKButton, myLButton, myMButton, myNButton, myOButton, myPButton, myQButton, myRButton, mySButton, myTButton, myUButton, myVButton, myWButton, myXButton, myYButton, myZButton};
+        oponentsGameLetters = new JButton[]{opAButton, opBButton, opCButton, opDButton, opEButton, opFButton, opGButton, opHButton, opIButton, opJButton, opKButton, opLButton, opMButton, opNButton, opOButton, opPButton, opQButton, opRButton, opSButton, opTButton, opUButton, opVButton, opWButton, opXButton, opYButton, opZButton};
+
 
         frame.pack();
         frame.setVisible(true);
@@ -152,5 +159,25 @@ public class Board {
         wLabel.setText("W");
         yLabel.setText("Y");
         zLabel.setText("Z");
+    }
+
+    public void updateMyLetters(List <String> myLetters) {
+        for (JButton button: myGameLetters) {
+            if (!myLetters.contains(button.getText())) {
+                button.setEnabled(false);
+            } else {
+                button.setEnabled(true);
+            }
+        }
+    }
+
+    public void updateOponentsLetters(List <String> opLetters) {
+        for (JButton button: oponentsGameLetters) {
+            if (!opLetters.contains(button.getText())) {
+                button.setEnabled(false);
+            } else {
+                button.setEnabled(true);
+            }
+        }
     }
 }
