@@ -9,6 +9,11 @@ import java.util.List;
 public class Server {
     ServerSocket server;
     List <PrintWriter> clientWriters = new ArrayList<>();
+    Socket firstPlayer;
+    Socket secondPlayer;
+    Socket currentPlayer;
+    int firstPlayerPosition = 0;
+    int secondPlayerPosition = 0;
 
     public static void main(String[] args) {
         new Server();
@@ -23,8 +28,25 @@ public class Server {
             server = new ServerSocket(5000);
             while (true) {
                 Socket clientSocket = server.accept();
+
+                // Define o primeiro e o segundo jogador
+                if (firstPlayer == null) {
+                    firstPlayer = clientSocket;
+                } else if (secondPlayer == null) {
+                    secondPlayer = clientSocket;
+                }
+
                 PrintWriter w = new PrintWriter(clientSocket.getOutputStream());
                 clientWriters.add(w);
+
+                // Inicia a partida pelo jogador 1
+                if (firstPlayer != null && secondPlayer != null) {
+                    currentPlayer = firstPlayer;
+                    currentPlaying(firstPlayer);
+                    currentWaiting(secondPlayer);
+                    sendMessageToAll("dicefirstPlayer" + firstPlayerPosition + "," + "secondPlayer" + secondPlayerPosition);
+                    sendMessageToAll("gameJogo: É a vez do Jogador 1");
+                }
 
                 new Thread(new ClientListener(clientSocket)).start();
             }
@@ -48,7 +70,17 @@ public class Server {
             String text;
             while ((text = serverReader.nextLine()) != null) {
                 System.out.println(text);
-                sendMessageToAll(text);
+                String messageBegin = text.substring(0,4);
+                String messageWithoutBegin = text.substring(4);
+
+                switch (messageBegin) {
+                    case "chat": sendMessageToAll("chat"+messageWithoutBegin);
+                                 break;
+
+                    case "dice": calculatePosition(messageWithoutBegin);
+                                 sendMessageToAll("dicefirstPlayer" + firstPlayerPosition + "," + "secondPlayer" + secondPlayerPosition);
+                                 break;
+                }
             }
         }
     }
@@ -62,6 +94,38 @@ public class Server {
             } catch (Exception e) {
 
             }
+        }
+    }
+
+    private void currentPlaying(Socket player) {
+        try {
+            PrintWriter w = new PrintWriter(player.getOutputStream());
+            w.println("turnplay");
+            w.flush();
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void currentWaiting(Socket player) {
+        try {
+            PrintWriter w = new PrintWriter(player.getOutputStream());
+            w.println("turnwait");
+            w.flush();
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void calculatePosition(String message) {
+        String position = message.substring(message.length() - 1);
+
+        if (message.startsWith("f")) {
+            firstPlayerPosition += Integer.parseInt(position);
+            sendMessageToAll("gameJogo: O Jogador 1 anda "+ position +  " casas!");
+        } else {
+            secondPlayerPosition += Integer.parseInt(position);
+            sendMessageToAll("gameJogo: O Jogador 2 anda "+ position +  " casas!");
         }
     }
 }

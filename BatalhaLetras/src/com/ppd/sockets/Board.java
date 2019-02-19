@@ -3,13 +3,16 @@ package com.ppd.sockets;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Board {
     private JPanel mainView;
     private JPanel board;
     private JPanel myLetters;
     private JPanel opLetters;
-    private JPanel chatView;
+    JPanel chatView;
     private JPanel auxiliaryPanel;
     private JButton myAButton;
     private JButton myBButton;
@@ -67,11 +70,39 @@ public class Board {
     JButton sendMessageButton;
     JTextField textToSend;
     private JPanel dicePanel;
-    private JButton diceButton;
-    private JTextArea boardLog;
+    JButton diceButton;
+    JTextArea boardLog;
     private JPanel boardLogPanel;
-    private JButton finishTurnButton;
+    JButton finishTurnButton;
     private JButton desistirDoJogoButton;
+    private JLabel aLabel;
+    private JLabel bLabel;
+    private JLabel cLabel;
+    private JLabel dLabel;
+    private JLabel eLabel;
+    private JLabel fLabel;
+    private JLabel gLabel;
+    private JLabel hLabel;
+    private JLabel iLabel;
+    private JLabel jLabel;
+    private JLabel kLabel;
+    private JLabel lLabel;
+    private JLabel mLabel;
+    private JLabel nLabel;
+    private JLabel oLabel;
+    private JLabel pLabel;
+    private JLabel qLabel;
+    private JLabel rLabel;
+    private JLabel sLabel;
+    private JLabel tLabel;
+    private JLabel uLabel;
+    private JLabel vLabel;
+    private JLabel wLabel;
+    private JLabel xLabel;
+    private JLabel yLabel;
+    private JLabel zLabel;
+
+    JLabel[] boardLetters;
 
     public Board(String playerName) {
         JFrame frame = new JFrame("Batalha das Letras "+playerName);
@@ -82,10 +113,44 @@ public class Board {
         ImageIcon img = new ImageIcon("/Users/annekarinysilvafreitas/Desktop/BatalhaLetras/1.png");
         diceButton.setIcon(img);
 
-        // Scroll do chat
+        // Chat
+        boardLog.setEditable(false);
         receivedText.setEditable(false);
+
+        // Letras do tabuleiro principal
+        boardLetters = new JLabel[]{aLabel, bLabel, cLabel, dLabel, eLabel, fLabel, gLabel, hLabel, iLabel, jLabel, kLabel, lLabel, mLabel, nLabel, oLabel, pLabel, qLabel, rLabel, sLabel, tLabel, uLabel, vLabel, wLabel, xLabel, yLabel, zLabel};
 
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public void resetLetters() {
+        aLabel.setText("A");
+        bLabel.setText("B");
+        cLabel.setText("C");
+        dLabel.setText("D");
+        eLabel.setText("E");
+        fLabel.setText("F");
+        gLabel.setText("G");
+        hLabel.setText("H");
+        iLabel.setText("I");
+        jLabel.setText("J");
+        kLabel.setText("K");
+        lLabel.setText("L");
+        mLabel.setText("M");
+        nLabel.setText("N");
+        oLabel.setText("O");
+        pLabel.setText("P");
+        qLabel.setText("Q");
+        rLabel.setText("R");
+        sLabel.setText("S");
+        tLabel.setText("T");
+        uLabel.setText("U");
+        vLabel.setText("V");
+        wLabel.setText("W");
+        xLabel.setText("X");
+        wLabel.setText("W");
+        yLabel.setText("Y");
+        zLabel.setText("Z");
     }
 }
