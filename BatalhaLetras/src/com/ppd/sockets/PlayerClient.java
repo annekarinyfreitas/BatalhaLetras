@@ -3,6 +3,7 @@ package com.ppd.sockets;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -19,6 +20,7 @@ public class PlayerClient {
     Scanner clientReader;
 
     boolean playedDice = false;
+
 
     public static void main(String[] args) {
         new PlayerClient("firstPlayer");
@@ -69,6 +71,27 @@ public class PlayerClient {
                 board.selectedWord.setText("");
                 board.selectedWord.requestFocus();
                 board.sendGameWordButton.setEnabled(false);
+
+                // Passa o turno
+                clientPrintWriter.println("turn"+playerName);
+                clientPrintWriter.flush();
+            }
+        });
+
+        // Evento para desistir do jogo
+        board.giveUpGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
+            }
+        });
+
+        // Evento para reiniciar a partida
+        board.restartPlayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clientPrintWriter.println("rest");
+                clientPrintWriter.flush();
             }
         });
     }
@@ -98,8 +121,10 @@ public class PlayerClient {
         String[] positionsArray = message.split(",");
 
         // Pega as posições de cada jogador
-        int firstPosition = Integer.parseInt(positionsArray[0].substring(positionsArray[0].length() - 1));
-        int secondPosition = Integer.parseInt(positionsArray[1].substring(positionsArray[1].length() - 1));
+        String[] firstInfo = positionsArray[0].split(":");
+        String[] secondInfo = positionsArray[1].split(":");
+        int firstPosition = Integer.parseInt(firstInfo[1]);
+        int secondPosition = Integer.parseInt(secondInfo[1]);
 
         // Reseta as letras para atualizar de acordo com a mensagem
         board.resetLetters();
@@ -114,8 +139,8 @@ public class PlayerClient {
         List <String> myLetters =  Arrays.asList(messageArray[0].split(","));
         List <String> opponentsLetters =  Arrays.asList(messageArray[1].split(","));
 
-        board.updateMyLetters(myLetters);
-        board.updateOponentsLetters(opponentsLetters);
+        board.updateGameLetters(myLetters, board.myGameLetters);
+        board.updateGameLetters(opponentsLetters, board.oponentsGameLetters);
     }
 
     private class ServerListener implements Runnable {

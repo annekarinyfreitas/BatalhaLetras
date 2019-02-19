@@ -15,8 +15,8 @@ public class Server {
     Socket currentPlayer;
     int firstPlayerPosition = 0;
     int secondPlayerPosition = 0;
-    String[] firstPlayerLetters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-    String[] secondPlayerLetters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    String[] firstPlayerLetters;
+    String[] secondPlayerLetters;
 
     public static void main(String[] args) {
         new Server();
@@ -42,14 +42,7 @@ public class Server {
                 PrintWriter w = new PrintWriter(clientSocket.getOutputStream());
                 clientWriters.add(w);
 
-                // Inicia a partida pelo jogador 1
-                if (firstPlayer != null && secondPlayer != null) {
-                    currentPlayer = firstPlayer;
-                    currentPlaying(firstPlayer);
-                    currentWaiting(secondPlayer);
-                    sendMessageToAll("dicefirstPlayer" + firstPlayerPosition + "," + "secondPlayer" + secondPlayerPosition);
-                    sendMessageToAll("gameJogo: É a vez do Jogador 1");
-                }
+                startGame();
 
                 new Thread(new ClientListener(clientSocket)).start();
             }
@@ -83,12 +76,21 @@ public class Server {
 
                     case "dice":
                         calculatePosition(messageWithoutBegin);
-                         sendMessageToAll("dicefirstPlayer" + firstPlayerPosition + "," + "secondPlayer" + secondPlayerPosition);
+                         sendMessageToAll("dicefirstPlayer:" + firstPlayerPosition + "," + "secondPlayer:" + secondPlayerPosition);
                          break;
 
                     case "word":
                         updatePlayersLetters(messageWithoutBegin);
                         break;
+
+                    case "turn":
+                        passTurn(messageWithoutBegin);
+                        break;
+
+                    case "rest":
+                        startGame();
+                        break;
+
 
                 }
             }
@@ -104,6 +106,16 @@ public class Server {
             } catch (Exception e) {
 
             }
+        }
+    }
+
+    private void passTurn(String message) {
+        if (message.startsWith("f")) {
+            currentPlaying(secondPlayer);
+            currentWaiting(firstPlayer);
+        } else {
+            currentPlaying(firstPlayer);
+            currentWaiting(secondPlayer);
         }
     }
 
@@ -143,9 +155,15 @@ public class Server {
 
         if (message.startsWith("f")) {
             firstPlayerPosition += Integer.parseInt(position);
+            if (firstPlayerPosition > 25) {
+                firstPlayerPosition = firstPlayerPosition - 26;
+            }
             sendMessageToAll("gameJogo: O Jogador 1 anda "+ position +  " casas!");
         } else {
             secondPlayerPosition += Integer.parseInt(position);
+            if (secondPlayerPosition > 25) {
+                secondPlayerPosition = secondPlayerPosition - 26;
+            }
             sendMessageToAll("gameJogo: O Jogador 2 anda "+ position +  " casas!");
         }
     }
@@ -179,5 +197,34 @@ public class Server {
             }
         }
         return list.toArray(new String[0]);
+    }
+
+    // Renicia as variáveis do jogo
+    private void startGame() {
+        // Ambos jogadores comecam da primeira letra
+        firstPlayerPosition = 0;
+        secondPlayerPosition = 0;
+
+        // Ambos jogadores possuem todas as letras disponíveis
+        firstPlayerLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+        secondPlayerLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+
+        // Inicia a partida pelo jogador 1
+        if (firstPlayer != null && secondPlayer != null) {
+            // Jogador atual
+            currentPlayer = firstPlayer;
+
+            // Define quem espera e quem aguarda
+            currentPlaying(firstPlayer);
+            currentWaiting(secondPlayer);
+
+            // Inicializa os jogadores com todas as letras disponiveis
+            sendMessageToSocket(firstPlayer, "word" + String.join(",", firstPlayerLetters) + ":" + String.join(",", secondPlayerLetters));
+            sendMessageToSocket(secondPlayer, "word" + String.join(",", secondPlayerLetters) + ":" + String.join(",", firstPlayerLetters));
+
+            // Avisa aos jogadores
+            sendMessageToAll("dicefirstPlayer:" + firstPlayerPosition + "," + "secondPlayer:" + secondPlayerPosition);
+            sendMessageToAll("gameJogo: É a vez do Jogador 1");
+        }
     }
 }
