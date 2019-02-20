@@ -1,7 +1,12 @@
 package com.ppd.sockets;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.DefaultCaret;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class Board {
@@ -107,6 +112,11 @@ public class Board {
     JButton[] oponentsGameLetters;
 
     JFrame frame;
+    private String[] alphabetLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+
+//    public static void main(String[] args) {
+//        new Board("Teste");
+//    }
 
     public Board(String playerName) {
         frame = new JFrame("Batalha das Letras "+playerName);
@@ -140,33 +150,9 @@ public class Board {
 
     // RESETA AS LETRAS DO TABULEIRO, PARA REMOVER A POSICAO DOS JOGADORES
     public void resetLetters() {
-        aLabel.setText("A");
-        bLabel.setText("B");
-        cLabel.setText("C");
-        dLabel.setText("D");
-        eLabel.setText("E");
-        fLabel.setText("F");
-        gLabel.setText("G");
-        hLabel.setText("H");
-        iLabel.setText("I");
-        jLabel.setText("J");
-        kLabel.setText("K");
-        lLabel.setText("L");
-        mLabel.setText("M");
-        nLabel.setText("N");
-        oLabel.setText("O");
-        pLabel.setText("P");
-        qLabel.setText("Q");
-        rLabel.setText("R");
-        sLabel.setText("S");
-        tLabel.setText("T");
-        uLabel.setText("U");
-        vLabel.setText("V");
-        wLabel.setText("W");
-        xLabel.setText("X");
-        wLabel.setText("W");
-        yLabel.setText("Y");
-        zLabel.setText("Z");
+        for (JLabel label: boardLetters) {
+            label.setText(" ");
+        }
     }
 
     // ATUALIZA AS LETRAS DOS JOGADORES
@@ -180,5 +166,69 @@ public class Board {
                 }
             }
         }
+    }
+
+    private JLabel setLetterImageToLabel(String letter) {
+        JLabel label = new JLabel();
+        label.setName(letter);
+
+        label.setForeground(Color.white);
+        label.setHorizontalTextPosition(JLabel.CENTER);
+        label.setVerticalTextPosition(JLabel.BOTTOM);
+
+        if (letter.equals("I")) {
+            label.setSize(20, 45);
+        } else {
+            label.setSize(35, 45);
+        }
+
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("images/letters/" + letter + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Image dimg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        label.setIcon(imageIcon);
+
+        return label;
+    }
+
+    private void createUIComponents() {
+        aLabel = setLetterImageToLabel("A");
+        bLabel = setLetterImageToLabel("B");
+        cLabel = setLetterImageToLabel("C");
+        dLabel = setLetterImageToLabel("D");
+        eLabel = setLetterImageToLabel("E");
+        fLabel = setLetterImageToLabel("F");
+        gLabel = setLetterImageToLabel("G");
+        hLabel = setLetterImageToLabel("H");
+        iLabel = setLetterImageToLabel("I");
+        jLabel = setLetterImageToLabel("J");
+        kLabel = setLetterImageToLabel("K");
+        lLabel = setLetterImageToLabel("L");
+        mLabel = setLetterImageToLabel("M");
+        nLabel = setLetterImageToLabel("N");
+        oLabel = setLetterImageToLabel("O");
+        pLabel = setLetterImageToLabel("P");
+        qLabel = setLetterImageToLabel("Q");
+        rLabel = setLetterImageToLabel("R");
+        sLabel = setLetterImageToLabel("S");
+        tLabel = setLetterImageToLabel("T");
+        uLabel = setLetterImageToLabel("U");
+        vLabel = setLetterImageToLabel("V");
+        wLabel = setLetterImageToLabel("W");
+        xLabel = setLetterImageToLabel("X");
+        yLabel = setLetterImageToLabel("Y");
+        zLabel = setLetterImageToLabel("Z");
+
+//        boardLetters = new JLabel[]{aLabel, bLabel, cLabel, dLabel, eLabel, fLabel, gLabel, hLabel, iLabel, jLabel, kLabel, lLabel, mLabel, nLabel, oLabel, pLabel, qLabel, rLabel, sLabel, tLabel, uLabel, vLabel, wLabel, xLabel, yLabel, zLabel};
+//
+//        for (int i = 0; i < 26; i++) {
+//            boardLetters[i] = setLetterImageToLabel(alphabetLetters[i]);
+//            System.out.println("i:" + i + boardLetters[i].getName() + "letra" + alphabetLetters[i]);
+//        }
     }
 }

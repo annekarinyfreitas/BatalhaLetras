@@ -13,317 +13,305 @@
           <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <background color="-16582401"/>
+          <background color="-12970413"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="be08e" class="javax.swing.JLabel" binding="aLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <font name="Ayuthaya" size="18"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <text value="A"/>
-            </properties>
-          </component>
-          <component id="4d302" class="javax.swing.JLabel" binding="bLabel">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <font name="Ayuthaya" size="18"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <text value="B"/>
-            </properties>
-          </component>
-          <component id="50cf" class="javax.swing.JLabel" binding="cLabel">
+          <component id="4d302" class="javax.swing.JLabel" binding="bLabel" custom-create="true">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value=" B"/>
+            </properties>
+          </component>
+          <component id="50cf" class="javax.swing.JLabel" binding="cLabel" custom-create="true">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="C"/>
             </properties>
           </component>
-          <component id="e1598" class="javax.swing.JLabel" binding="dLabel">
+          <component id="e1598" class="javax.swing.JLabel" binding="dLabel" custom-create="true">
             <constraints>
-              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="D"/>
             </properties>
           </component>
-          <component id="b6eca" class="javax.swing.JLabel" binding="eLabel">
+          <component id="b6eca" class="javax.swing.JLabel" binding="eLabel" custom-create="true">
             <constraints>
-              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="E"/>
             </properties>
           </component>
-          <component id="99427" class="javax.swing.JLabel" binding="fLabel">
+          <component id="99427" class="javax.swing.JLabel" binding="fLabel" custom-create="true">
             <constraints>
-              <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="F"/>
             </properties>
           </component>
-          <component id="54de1" class="javax.swing.JLabel" binding="gLabel">
+          <component id="54de1" class="javax.swing.JLabel" binding="gLabel" custom-create="true">
             <constraints>
-              <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="1" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="G"/>
             </properties>
           </component>
-          <component id="f82be" class="javax.swing.JLabel" binding="hLabel">
+          <component id="f82be" class="javax.swing.JLabel" binding="hLabel" custom-create="true">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="H"/>
             </properties>
           </component>
-          <component id="d6ad7" class="javax.swing.JLabel" binding="iLabel">
+          <component id="d6ad7" class="javax.swing.JLabel" binding="iLabel" custom-create="true">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="I"/>
             </properties>
           </component>
-          <component id="d9ffc" class="javax.swing.JLabel" binding="jLabel">
+          <component id="d9ffc" class="javax.swing.JLabel" binding="jLabel" custom-create="true">
             <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="J"/>
             </properties>
           </component>
-          <component id="37be5" class="javax.swing.JLabel" binding="kLabel">
+          <component id="37be5" class="javax.swing.JLabel" binding="kLabel" custom-create="true">
             <constraints>
-              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="K"/>
             </properties>
           </component>
-          <component id="8173f" class="javax.swing.JLabel" binding="lLabel">
+          <component id="8173f" class="javax.swing.JLabel" binding="lLabel" custom-create="true">
             <constraints>
-              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="L"/>
             </properties>
           </component>
-          <component id="67a19" class="javax.swing.JLabel" binding="mLabel">
+          <component id="67a19" class="javax.swing.JLabel" binding="mLabel" custom-create="true">
             <constraints>
-              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="M"/>
             </properties>
           </component>
-          <component id="7d385" class="javax.swing.JLabel" binding="nLabel">
+          <component id="7d385" class="javax.swing.JLabel" binding="nLabel" custom-create="true">
             <constraints>
-              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="N"/>
             </properties>
           </component>
-          <component id="2bc4c" class="javax.swing.JLabel" binding="oLabel">
+          <component id="2bc4c" class="javax.swing.JLabel" binding="oLabel" custom-create="true">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="O"/>
             </properties>
           </component>
-          <component id="29054" class="javax.swing.JLabel" binding="pLabel">
+          <component id="29054" class="javax.swing.JLabel" binding="pLabel" custom-create="true">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="P"/>
             </properties>
           </component>
-          <component id="fd6" class="javax.swing.JLabel" binding="qLabel">
+          <component id="fd6" class="javax.swing.JLabel" binding="qLabel" custom-create="true">
             <constraints>
-              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Q"/>
             </properties>
           </component>
-          <component id="2591c" class="javax.swing.JLabel" binding="rLabel">
+          <component id="2591c" class="javax.swing.JLabel" binding="rLabel" custom-create="true">
             <constraints>
-              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="R"/>
             </properties>
           </component>
-          <component id="bc226" class="javax.swing.JLabel" binding="sLabel">
+          <component id="bc226" class="javax.swing.JLabel" binding="sLabel" custom-create="true">
             <constraints>
-              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="S"/>
             </properties>
           </component>
-          <component id="8b6a4" class="javax.swing.JLabel" binding="tLabel">
+          <component id="8b6a4" class="javax.swing.JLabel" binding="tLabel" custom-create="true">
             <constraints>
-              <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="T"/>
             </properties>
           </component>
-          <component id="ea47d" class="javax.swing.JLabel" binding="uLabel">
+          <component id="ea47d" class="javax.swing.JLabel" binding="uLabel" custom-create="true">
             <constraints>
-              <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="U"/>
             </properties>
           </component>
-          <component id="a22a" class="javax.swing.JLabel" binding="vLabel">
+          <component id="a22a" class="javax.swing.JLabel" binding="vLabel" custom-create="true">
             <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="V"/>
             </properties>
           </component>
-          <component id="72b83" class="javax.swing.JLabel" binding="wLabel">
+          <component id="72b83" class="javax.swing.JLabel" binding="wLabel" custom-create="true">
             <constraints>
-              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="W"/>
             </properties>
           </component>
-          <component id="5a157" class="javax.swing.JLabel" binding="xLabel">
+          <component id="5a157" class="javax.swing.JLabel" binding="xLabel" custom-create="true">
             <constraints>
-              <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="X"/>
             </properties>
           </component>
-          <component id="c5b5" class="javax.swing.JLabel" binding="yLabel">
+          <component id="c5b5" class="javax.swing.JLabel" binding="yLabel" custom-create="true">
             <constraints>
-              <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Y"/>
             </properties>
           </component>
-          <component id="81633" class="javax.swing.JLabel" binding="zLabel">
+          <component id="81633" class="javax.swing.JLabel" binding="zLabel" custom-create="true">
             <constraints>
-              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="20" bottom="20" right="20" weightx="0.0" weighty="0.0"/>
+              <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" size="18"/>
+              <font/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Z"/>
@@ -331,14 +319,29 @@
           </component>
           <component id="87e74" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <background color="-983041"/>
               <font name="Ayuthaya" size="16" style="1"/>
+              <foreground color="-983041"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Letras"/>
+            </properties>
+          </component>
+          <component id="ea4ff" class="javax.swing.JLabel" binding="aLabel" custom-create="true">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="15" bottom="15" right="15" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-983041"/>
+              <foreground color="-983041"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="A"/>
             </properties>
           </component>
         </children>

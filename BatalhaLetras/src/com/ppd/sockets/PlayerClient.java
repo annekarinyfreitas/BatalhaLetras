@@ -14,7 +14,6 @@ import java.util.Arrays;
 public class PlayerClient {
     String playerName;
     Board board;
-    String diceImagesPath = "/Users/annekarinysilvafreitas/Desktop/BatalhaLetras/";
 
     Socket clientSocket;
     PrintWriter clientPrintWriter;
@@ -50,7 +49,7 @@ public class PlayerClient {
                 int num = ThreadLocalRandom.current().nextInt(1, 7);
 
                 // Altera a imagem do dado
-                ImageIcon img = new ImageIcon(diceImagesPath + num +".png");
+                ImageIcon img = new ImageIcon("images/dice/" + num +".png");
                 board.diceButton.setIcon(img);
                 board.diceButton.setEnabled(false);
                 board.sendGameWordButton.setEnabled(true);
@@ -165,7 +164,7 @@ public class PlayerClient {
                         if (input == JOptionPane.OK_OPTION || input == JOptionPane.CLOSED_OPTION) {
                             board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
                         }
-                        
+
                         break;
 
                 }
