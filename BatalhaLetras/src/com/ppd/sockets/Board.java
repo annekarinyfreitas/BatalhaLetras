@@ -8,7 +8,6 @@ public class Board {
     private JPanel board;
     private JPanel myLetters;
     private JPanel opLetters;
-    JPanel chatView;
     private JPanel auxiliaryPanel;
     private JButton myAButton;
     private JButton myBButton;
@@ -62,15 +61,8 @@ public class Board {
     private JButton opXButton;
     private JButton opYButton;
     private JButton opZButton;
-    JTextArea receivedText;
-    JButton sendMessageButton;
-    JTextField textToSend;
     private JPanel dicePanel;
-    JButton diceButton;
-    JTextArea boardLog;
     private JPanel boardLogPanel;
-    JButton sendGameWordButton;
-    JButton giveUpGameButton;
     private JLabel aLabel;
     private JLabel bLabel;
     private JLabel cLabel;
@@ -97,8 +89,17 @@ public class Board {
     private JLabel xLabel;
     private JLabel yLabel;
     private JLabel zLabel;
+    JPanel chatView;
+
     JTextField selectedWord;
     JButton restartPlayButton;
+    JTextArea receivedText;
+    JButton sendMessageButton;
+    JTextField textToSend;
+    JButton diceButton;
+    JTextArea boardLog;
+    JButton sendGameWordButton;
+    JButton giveUpGameButton;
 
     JLabel[] boardLetters;
     JButton[] myGameLetters;
@@ -128,6 +129,7 @@ public class Board {
         frame.setVisible(true);
     }
 
+    // RESETA AS LETRAS DO TABULEIRO, PARA REMOVER A POSICAO DOS JOGADORES
     public void resetLetters() {
         aLabel.setText("A");
         bLabel.setText("B");
@@ -158,6 +160,7 @@ public class Board {
         zLabel.setText("Z");
     }
 
+    // ATUALIZA AS LETRAS DOS JOGADORES
     public void updateGameLetters(List <String> letters, JButton[] buttons) {
         if (!letters.isEmpty()) {
             for (JButton button: buttons) {

@@ -335,7 +335,7 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <font name="Ayuthaya" style="1"/>
+              <font name="Ayuthaya" size="16" style="1"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Letras"/>

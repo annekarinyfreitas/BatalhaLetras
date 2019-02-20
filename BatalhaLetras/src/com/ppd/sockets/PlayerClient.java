@@ -14,13 +14,11 @@ import java.util.Arrays;
 public class PlayerClient {
     String playerName;
     Board board;
+    String diceImagesPath = "/Users/annekarinysilvafreitas/Desktop/BatalhaLetras/";
 
     Socket clientSocket;
     PrintWriter clientPrintWriter;
     Scanner clientReader;
-
-    boolean playedDice = false;
-
 
     public static void main(String[] args) {
         new PlayerClient("firstPlayer");
@@ -32,7 +30,7 @@ public class PlayerClient {
         board = new Board(playerName);
         setupConnection();
 
-        // Evento para enviar mensagem do chat
+        // EVENTO PARA ENVIAR MENSAGEM DO CHAT
         board.sendMessageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,14 +42,15 @@ public class PlayerClient {
         });
 
 
-        // Evento para Jogar o dado
+        // EVENTO DE JOGAR O DADO
         board.diceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Gera uma face aleatoria do dado
                 int num = ThreadLocalRandom.current().nextInt(1, 7);
 
                 // Altera a imagem do dado
-                ImageIcon img = new ImageIcon("/Users/annekarinysilvafreitas/Desktop/BatalhaLetras/"+ num +".png");
+                ImageIcon img = new ImageIcon(diceImagesPath + num +".png");
                 board.diceButton.setIcon(img);
                 board.diceButton.setEnabled(false);
 
@@ -61,12 +60,12 @@ public class PlayerClient {
             }
         });
 
-        // Evento para enviar a palavra do jogo para o oponente
+        // EVENTO ENVIAR PALAVRA DO JOGO
         board.sendGameWordButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Formato wordfirstPlayer,casa
-                clientPrintWriter.println("word"+ playerName + "," + board.selectedWord.getText());
+                clientPrintWriter.println("word"+ playerName + ":" + board.selectedWord.getText());
                 clientPrintWriter.flush();
                 board.selectedWord.setText("");
                 board.selectedWord.requestFocus();
@@ -78,7 +77,7 @@ public class PlayerClient {
             }
         });
 
-        // Evento para desistir do jogo
+        // EVENTO PARA DESISTIR DO JOGO
         board.giveUpGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +85,7 @@ public class PlayerClient {
             }
         });
 
-        // Evento para reiniciar a partida
+        // EVENTO PARA REINICIAR A PARTIDA
         board.restartPlayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,6 +95,7 @@ public class PlayerClient {
         });
     }
 
+    // CONEXAO COM O SERVIDOR
     private void setupConnection() {
         try {
             clientSocket = new Socket("127.0.0.1", 5000);
@@ -106,18 +106,62 @@ public class PlayerClient {
         }
     }
 
-    private void play() {
-        board.diceButton.setEnabled(true);
-        board.sendGameWordButton.setEnabled(true);
+    // THREAD PARA ESCUTAR MENSAGENS DO SERVIDOR
+    private class ServerListener implements Runnable {
+        @Override
+        public void run() {
+            String text;
+            while ((text = clientReader.nextLine()) != null) {
+                String messageBegin = text.substring(0,4);
+                String messageWithoutBegin = text.substring(4);
+
+                System.out.println("Recebido por " + playerName + " -> " + text);
+
+                switch (messageBegin) {
+
+                    // INICIO DO JOGO
+                    case "init":
+                        board.boardLog.setText("");
+                        board.receivedText.setText("");
+
+                    // CHAT
+                    case "chat":
+                        board.receivedText.append(messageWithoutBegin + "\n");
+                        break;
+
+                    // MENSAGENS DE ATUALIZACAO DO JOGO, QUE FICAM NA LATERAL DIREITA
+                    case "game":
+                        board.boardLog.append(messageWithoutBegin + "\n");
+                        break;
+
+                    // TROCA DE TURNOS
+                    case "turn":
+                        play(messageWithoutBegin.equals("play") ? true : false);
+                        break;
+
+                    // POSICIONAMENTO DOS JOGADORES NO TABULEIRO
+                    case "dice":
+                        updateBoardPosition(messageWithoutBegin);
+                        break;
+
+                    // ENVIO DA PALAVRA DA JOGADA
+                    case "word":
+                        updateAllLetters(messageWithoutBegin);
+                        break;
+
+                }
+            }
+        }
     }
 
-    private void waitTurn() {
-        board.diceButton.setEnabled(false);
-        board.sendGameWordButton.setEnabled(false);
+    // ATIVA/DESATIVA BOTOES DE JOGAR
+    private void play(boolean shouldPlay) {
+        board.diceButton.setEnabled(shouldPlay);
+        board.sendGameWordButton.setEnabled(shouldPlay);
     }
 
+    //  ATUALIZA A POSICAO DOS JOGADORES NO TABULEIRO (EX: firstPlayer:0,secondPlayer:0)
     private void updateBoardPosition(String message) {
-        // A mensagem vem no formato (firstPlayer pos1, secondPlayer pos2)
         String[] positionsArray = message.split(",");
 
         // Pega as posições de cada jogador
@@ -134,55 +178,14 @@ public class PlayerClient {
         board.boardLetters[secondPosition].setText(board.boardLetters[secondPosition].getText() + " (2)");
     }
 
+    // ATUALIZA TODAS AS LETRAS DISPONIVEIS DO JOGADOR E DO OPONENTE (EX: A,B,C,D,E,F,G,H,I,J:A,B,C) antes do : é do jogador, e as depois é do oponente
     private void updateAllLetters(String message) {
         String[] messageArray = message.split(":");
         List <String> myLetters =  Arrays.asList(messageArray[0].split(","));
         List <String> opponentsLetters =  Arrays.asList(messageArray[1].split(","));
 
+        // Envia os arrays com as letras para o tabuleiro
         board.updateGameLetters(myLetters, board.myGameLetters);
         board.updateGameLetters(opponentsLetters, board.oponentsGameLetters);
-    }
-
-    private class ServerListener implements Runnable {
-        @Override
-        public void run() {
-            String text;
-            while ((text = clientReader.nextLine()) != null) {
-                String messageBegin = text.substring(0,4);
-                String messageWithoutBegin = text.substring(4);
-                System.out.println("Recebido por " + playerName + " -> " + text);
-
-                switch (messageBegin) {
-                    // Chat
-                    case "chat":
-                        board.receivedText.append(messageWithoutBegin + "\n");
-                        break;
-
-                    // Mensagens gerais do jogo (que vão para o log)
-                    case "game":
-                        board.boardLog.append(messageWithoutBegin + "\n");
-                        break;
-
-                    // Troca de turnos entre os jogadores
-                    case "turn":
-                        if (messageWithoutBegin.equals("play")) {
-                            play();
-                        } else {
-                            waitTurn();
-                        }
-                        break;
-
-                    // Atualização do valor do dado e posicionamento dos jogadores no tabuleiro
-                    case "dice":
-                        updateBoardPosition(messageWithoutBegin);
-                        break;
-
-                    case "word":
-                        updateAllLetters(messageWithoutBegin);
-                        break;
-
-                }
-            }
-        }
     }
 }
