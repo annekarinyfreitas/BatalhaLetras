@@ -1,6 +1,7 @@
 package com.ppd.sockets;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.util.List;
 
 public class Board {
@@ -124,6 +125,14 @@ public class Board {
         boardLetters = new JLabel[]{aLabel, bLabel, cLabel, dLabel, eLabel, fLabel, gLabel, hLabel, iLabel, jLabel, kLabel, lLabel, mLabel, nLabel, oLabel, pLabel, qLabel, rLabel, sLabel, tLabel, uLabel, vLabel, wLabel, xLabel, yLabel, zLabel};
         myGameLetters = new JButton[]{myAButton, myBButton, myCButton, myDButton, myEButton, myFButton, myGButton, myHButton, myIButton, myJButton, myKButton, myLButton, myMButton, myNButton, myOButton, myPButton, myQButton, myRButton, mySButton, myTButton, myUButton, myVButton, myWButton, myXButton, myYButton, myZButton};
         oponentsGameLetters = new JButton[]{opAButton, opBButton, opCButton, opDButton, opEButton, opFButton, opGButton, opHButton, opIButton, opJButton, opKButton, opLButton, opMButton, opNButton, opOButton, opPButton, opQButton, opRButton, opSButton, opTButton, opUButton, opVButton, opWButton, opXButton, opYButton, opZButton};
+
+        // Scroll do chat
+        DefaultCaret caret = (DefaultCaret)receivedText.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+
+        // Scroll do log
+        DefaultCaret logCaret = (DefaultCaret)boardLog.getCaret();
+        logCaret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
         frame.pack();
         frame.setVisible(true);

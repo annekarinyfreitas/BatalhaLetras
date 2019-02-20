@@ -2,6 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59406e58-9b5c-411c-b7ac-395bb8321b1e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$ServerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient$ServerListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/PlayerClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server$ClientListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server$ClientListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetras/com/ppd/sockets/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/sockets/Board.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/sockets/Board.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/sockets/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/sockets/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" afterDir="false" />
@@ -24,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="158" column="28" lean-forward="true" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
+            <state relative-caret-position="453">
+              <caret line="134" column="61" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+            <state relative-caret-position="241">
+              <caret line="244" column="53" selection-start-line="244" selection-start-column="53" selection-end-line="244" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5732#5740#0" expanded="true" />
@@ -54,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2267">
-              <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+            <state relative-caret-position="207">
+              <caret line="167" column="24" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,14 +104,14 @@
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/Tabuleiro.java" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient2.java" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerServer.java" />
-        <option value="$PROJECT_DIR$/src/com/ppd/sockets/Server.java" />
-        <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/Board.form" />
         <option value="$PROJECT_DIR$/src/com/ppd/sockets/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/ppd/sockets/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="708" />
@@ -145,7 +155,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="288" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550623356451" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550666636587" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
@@ -230,12 +240,12 @@
       <workItem from="1550438474511" duration="1661000" />
       <workItem from="1550440383446" duration="20097000" />
       <workItem from="1550539341220" duration="8963000" />
-      <workItem from="1550602985380" duration="17538000" />
+      <workItem from="1550602985380" duration="21780000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48259000" />
+    <option name="totallyTimeSpent" value="52501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="708" extended-state="0" />
@@ -250,7 +260,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2882736" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22638437" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39087948" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -260,7 +270,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.08791209" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32247558" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32247558" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.3296875" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -311,20 +321,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2267">
-          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+        <state relative-caret-position="241">
+          <caret line="244" column="53" selection-start-line="244" selection-start-column="53" selection-end-line="244" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5732#5740#0" expanded="true" />
@@ -337,8 +337,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="158" column="28" lean-forward="true" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
+        <state relative-caret-position="453">
+          <caret line="134" column="61" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ppd/sockets/PlayerClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="167" column="24" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

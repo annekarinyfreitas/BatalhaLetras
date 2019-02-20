@@ -53,6 +53,7 @@ public class PlayerClient {
                 ImageIcon img = new ImageIcon(diceImagesPath + num +".png");
                 board.diceButton.setIcon(img);
                 board.diceButton.setEnabled(false);
+                board.sendGameWordButton.setEnabled(true);
 
                 // Envia para o servidor a atualização da posição do jogador
                 clientPrintWriter.println("dice"+ playerName + num);
@@ -81,7 +82,9 @@ public class PlayerClient {
         board.giveUpGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
+                clientPrintWriter.println("over"+playerName);
+                clientPrintWriter.flush();
+                //board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
             }
         });
 
@@ -149,6 +152,22 @@ public class PlayerClient {
                         updateAllLetters(messageWithoutBegin);
                         break;
 
+                    // EVENTO DE FINAL DE JOGO
+                    case "over":
+                        board.frame.setVisible(false);
+                        board.frame.dispose();
+                        break;
+
+                    // EVENTO DE DESISTENCIA DA PARTIDA
+                    case "gvup":
+                        int input = JOptionPane.showOptionDialog(board.frame, "O oponente desistiu do jogo!", "Atenção", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+
+                        if (input == JOptionPane.OK_OPTION || input == JOptionPane.CLOSED_OPTION) {
+                            board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
+                        }
+                        
+                        break;
+
                 }
             }
         }
@@ -157,7 +176,7 @@ public class PlayerClient {
     // ATIVA/DESATIVA BOTOES DE JOGAR
     private void play(boolean shouldPlay) {
         board.diceButton.setEnabled(shouldPlay);
-        board.sendGameWordButton.setEnabled(shouldPlay);
+        board.sendGameWordButton.setEnabled(false);
     }
 
     //  ATUALIZA A POSICAO DOS JOGADORES NO TABULEIRO (EX: firstPlayer:0,secondPlayer:0)

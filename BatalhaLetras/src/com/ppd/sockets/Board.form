@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.ppd.sockets.Board">
   <grid id="27dc6" binding="mainView" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="20" y="45" width="1404" height="723"/>
+      <xy x="20" y="45" width="1404" height="777"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -859,7 +859,8 @@
           </component>
         </children>
       </grid>
-      <grid id="6878c" binding="chatView" layout-manager="GridBagLayout">
+      <grid id="6878c" binding="chatView" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <gridbag weightx="1.0" weighty="1.0"/>
@@ -869,34 +870,34 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="cfef7" class="javax.swing.JTextArea" binding="receivedText">
+          <scrollpane id="30ff9">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
-              <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
-            </constraints>
-            <properties>
-              <background color="-983041"/>
-            </properties>
-          </component>
-          <component id="bb71b" class="javax.swing.JButton" binding="sendMessageButton">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0"/>
-            </constraints>
-            <properties>
-              <text value="Enviar Mensagem"/>
-            </properties>
-          </component>
-          <component id="fdaa0" class="javax.swing.JTextField" binding="textToSend">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-              <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
+            <border type="none"/>
+            <children>
+              <component id="9dc76" class="javax.swing.JTextArea" binding="receivedText">
+                <constraints/>
+                <properties/>
+              </component>
+            </children>
+          </scrollpane>
+          <component id="23049" class="javax.swing.JTextField" binding="textToSend">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="3e91e" class="javax.swing.JButton" binding="sendMessageButton">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Enviar"/>
+            </properties>
           </component>
         </children>
       </grid>
@@ -970,20 +971,25 @@
               </component>
             </children>
           </grid>
-          <grid id="9e68" binding="boardLogPanel" layout-manager="GridBagLayout">
+          <grid id="9e68" binding="boardLogPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints border-constraint="Center"/>
             <properties/>
             <border type="none"/>
             <children>
-              <component id="d2cdb" class="javax.swing.JTextArea" binding="boardLog">
+              <scrollpane id="d12c3">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                  <gridbag top="20" left="20" bottom="20" right="20" weightx="1.0" weighty="1.0"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
-              </component>
+                <border type="none"/>
+                <children>
+                  <component id="63279" class="javax.swing.JTextArea" binding="boardLog">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
           </grid>
         </children>

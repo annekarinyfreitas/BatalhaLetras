@@ -101,6 +101,11 @@ public class Server {
                         startGame();
                         break;
 
+                    // Mensagens desistir do jogo
+                    case "over":
+                        sendGameOverMessages(messageWithoutBegin);
+                        break;
+
                     default:
                         break;
                 }
@@ -230,6 +235,18 @@ public class Server {
             // Avisa aos jogadores
             sendMessageToAll("dicefirstPlayer:" + firstPlayerPosition + "," + "secondPlayer:" + secondPlayerPosition);
             sendMessageToAll("gameJogo: É a vez do Jogador 1");
+        }
+    }
+
+    // DESISTENCIA DO JOGO (EX: overfirstPlayer)
+    private void sendGameOverMessages(String message) {
+        // Se foi o primeiro jogador a desistir, envia a mensagem de game over pra ele e pro oponente uma de give up
+        if (message.startsWith("f")) {
+            sendMessageToSocket(firstPlayer, "over");
+            sendMessageToSocket(secondPlayer, "gvup");
+        } else {
+            sendMessageToSocket(secondPlayer, "over");
+            sendMessageToSocket(firstPlayer, "gvup");
         }
     }
 }
