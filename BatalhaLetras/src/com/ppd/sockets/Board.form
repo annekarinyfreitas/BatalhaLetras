@@ -352,7 +352,7 @@
           <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <background color="-5308667"/>
+          <background color="-15886150"/>
         </properties>
         <border type="none"/>
         <children>
@@ -596,7 +596,9 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <background color="-983041"/>
               <font name="Ayuthaya"/>
+              <foreground color="-983041"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Minhas Letras"/>
@@ -610,7 +612,7 @@
           <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <background color="-1422318"/>
+          <background color="-3434039"/>
         </properties>
         <border type="none"/>
         <children>
@@ -854,7 +856,9 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <background color="-983041"/>
               <font name="Ayuthaya"/>
+              <foreground color="-983041"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
               <text value="Adversário"/>
@@ -869,7 +873,7 @@
           <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <background color="-3486774"/>
+          <background color="-2239263"/>
         </properties>
         <border type="none"/>
         <children>
@@ -910,14 +914,16 @@
           <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <background color="-983041"/>
+          <background color="-2239263"/>
         </properties>
         <border type="none"/>
         <children>
           <grid id="bc26" binding="dicePanel" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="50" left="50" bottom="50" right="50"/>
             <constraints border-constraint="West"/>
-            <properties/>
+            <properties>
+              <background color="-2239263"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="63eaf" class="javax.swing.JButton" binding="diceButton">
@@ -925,6 +931,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-2239263"/>
+                  <foreground color="-2239263"/>
                   <text value=""/>
                 </properties>
               </component>
@@ -959,6 +967,9 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-16777216"/>
+                  <font name="Ayuthaya"/>
+                  <foreground color="-16777216"/>
                   <text value="Jogue o dado:"/>
                 </properties>
               </component>
@@ -975,9 +986,11 @@
             </children>
           </grid>
           <grid id="9e68" binding="boardLogPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+            <margin top="15" left="15" bottom="15" right="15"/>
             <constraints border-constraint="Center"/>
-            <properties/>
+            <properties>
+              <background color="-2239263"/>
+            </properties>
             <border type="none"/>
             <children>
               <scrollpane id="d12c3">

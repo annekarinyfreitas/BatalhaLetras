@@ -168,6 +168,7 @@ public class Board {
         }
     }
 
+    // INICIALIZA OS LABELS DAS LETRAS COM IMAGENS
     private JLabel setLetterImageToLabel(String letter) {
         JLabel label = new JLabel();
         label.setName(letter);
@@ -196,6 +197,7 @@ public class Board {
         return label;
     }
 
+    // INICIALIZADOR DAS LETRAS DO TABULEIRO
     private void createUIComponents() {
         aLabel = setLetterImageToLabel("A");
         bLabel = setLetterImageToLabel("B");
@@ -223,12 +225,5 @@ public class Board {
         xLabel = setLetterImageToLabel("X");
         yLabel = setLetterImageToLabel("Y");
         zLabel = setLetterImageToLabel("Z");
-
-//        boardLetters = new JLabel[]{aLabel, bLabel, cLabel, dLabel, eLabel, fLabel, gLabel, hLabel, iLabel, jLabel, kLabel, lLabel, mLabel, nLabel, oLabel, pLabel, qLabel, rLabel, sLabel, tLabel, uLabel, vLabel, wLabel, xLabel, yLabel, zLabel};
-//
-//        for (int i = 0; i < 26; i++) {
-//            boardLetters[i] = setLetterImageToLabel(alphabetLetters[i]);
-//            System.out.println("i:" + i + boardLetters[i].getName() + "letra" + alphabetLetters[i]);
-//        }
     }
 }
