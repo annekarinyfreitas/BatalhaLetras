@@ -132,6 +132,11 @@ public class PlayerClient {
                         }
                     }
 
+                    // VITORIA
+                    if (receivedObject.get("win") != null) {
+                        showWinnerMessage(receivedObject.get("win").toString());
+                    }
+
                 } catch (Exception e) {
                     System.out.println(e.getLocalizedMessage());
                 }
@@ -280,6 +285,20 @@ public class PlayerClient {
         int input = JOptionPane.showOptionDialog(board.frame, "O oponente desistiu do jogo!", "Atenção", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 
         if (input == JOptionPane.OK_OPTION || input == JOptionPane.CLOSED_OPTION) {
+            board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
+        }
+    }
+
+    // Mostra opcoes apos algum jogador vencer
+    private void showWinnerMessage(String playerName) {
+        String[] options = {"Jogar novamente", "Sair do jogo"};
+        int x = JOptionPane.showOptionDialog(board.frame, "O Jogador " + playerName + " é o vencedor! Parabéns!!",
+                "Vitória",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+        if (x == 0) {
+            restartGame();
+        } else {
             board.frame.dispatchEvent(new WindowEvent(board.frame, WindowEvent.WINDOW_CLOSING));
         }
     }

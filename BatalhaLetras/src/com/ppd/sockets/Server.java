@@ -180,9 +180,18 @@ public class Server {
         // Apaga as letras descritas nos arrays dos jogadores
         if (message.startsWith("firstPlayer")) {
             secondPlayerLetters = removeWordFromLetters(messageArray[1], secondPlayerLetters);
+            //Detecta a vitoria
+            if (secondPlayerLetters.length == 0) {
+                object.put("win", "firstPlayer");
+            }
+
             object.put("gameLog", "Jogo: A palavra enviada pelo Jogador 1 é "+ messageArray[1]);
         } else {
             firstPlayerLetters = removeWordFromLetters(messageArray[1], firstPlayerLetters);
+            //Detecta a vitoria
+            if (secondPlayerLetters.length == 0) {
+                object.put("win", "secondPlayer");
+            }
             object.put("gameLog", "Jogo: A palavra enviada pelo Jogador 2 é "+ messageArray[1]);
         }
 
