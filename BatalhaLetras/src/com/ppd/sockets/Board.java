@@ -114,10 +114,6 @@ public class Board {
     JFrame frame;
     private String[] alphabetLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
-//    public static void main(String[] args) {
-//        new Board("Teste");
-//    }
-
     public Board(String playerName) {
         frame = new JFrame("Batalha das Letras "+playerName);
         frame.setContentPane(mainView);

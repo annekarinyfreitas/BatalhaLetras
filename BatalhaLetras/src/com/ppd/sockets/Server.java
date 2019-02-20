@@ -1,4 +1,8 @@
 package com.ppd.sockets;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import java.net.Socket;
 import java.net.ServerSocket;
 import java.io.PrintWriter;
@@ -70,44 +74,45 @@ public class Server {
         public void run() {
             String text;
             while ((text = serverReader.nextLine()) != null) {
-                System.out.println(text);
-                String messageBegin = text.substring(0,4);
-                String messageWithoutBegin = text.substring(4);
+                System.out.println("Recebido Servidor -> " + text);
 
-                switch (messageBegin) {
-                    // Mensagens do chat
-                    case "chat":
-                        sendMessageToAll("chat"+messageWithoutBegin);
-                         break;
+                // Faz a conversao da mensagem recebida em json
+                try {
+                    JSONParser parser = new JSONParser();
+                    JSONObject receivedObject = (JSONObject) parser.parse(text);
 
-                     // Mensagens sobre a rolagem de dados
-                    case "dice":
-                        calculatePosition(messageWithoutBegin);
-                         sendMessageToAll("dicefirstPlayer:" + firstPlayerPosition + "," + "secondPlayer:" + secondPlayerPosition);
-                         break;
+                    // CHAT
+                    if (receivedObject.get("chat") != null) {
+                        sendMessageToAll(text);
+                    }
 
-                     // Mensagens sobre o envio da palavra da jogada
-                    case "word":
-                        updatePlayersLetters(messageWithoutBegin);
-                        break;
+                    // Mensagens sobre a rolagem de dados
+                    if (receivedObject.get("dice") != null) {
+                        calculatePosition(receivedObject.get("dice").toString());
+                    }
 
-                    // Mensagens de passar o turno
-                    case "turn":
-                        passTurn(messageWithoutBegin);
-                        break;
+                    // Mensagens sobre o envio da palavra da jogada
+                    if (receivedObject.get("playedWord") != null) {
+                        updatePlayersLetters(receivedObject.get("playedWord").toString());
+                    }
 
-                    // Mensagens de reiniciar a partida
-                    case "rest":
+                    // Mensagens de passar o tueo
+                    if (receivedObject.get("passTurn") != null) {
+                        passTurn(receivedObject.get("passTurn").toString());
+                    }
+
+                    // Mensagens de quando um jogador desiste da partida
+                    if (receivedObject.get("over") != null) {
+                        sendGameOverMessages(receivedObject.get("over").toString());
+                    }
+
+                    // Mensagem para resetar a partida
+                    if (receivedObject.get("resetGame") != null) {
                         startGame();
-                        break;
+                    }
 
-                    // Mensagens desistir do jogo
-                    case "over":
-                        sendGameOverMessages(messageWithoutBegin);
-                        break;
-
-                    default:
-                        break;
+                } catch (Exception e) {
+                    System.out.println(e.getLocalizedMessage());
                 }
             }
         }
@@ -125,75 +130,116 @@ public class Server {
         }
     }
 
-    // ENVIA MENSAGENS PARA TODOS UM SOCKET
-    private void sendMessageToSocket(Socket player, String message) {
-        try {
-            PrintWriter w = new PrintWriter(player.getOutputStream());
-            w.println(message);
-            w.flush();
-        } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
-        }
-    }
-
-    // PASSAR O TURNO (EX: firstPlayer)
+    // PASSAR O TURNO (Exemplo de entrada: firstPlayer)
     private void passTurn(String message) {
-        if (message.startsWith("f")) {
-            sendMessageToSocket(secondPlayer, "turnplay");
-            sendMessageToSocket(firstPlayer, "turnwait");
+        JSONObject object = new JSONObject();
 
-            sendMessageToAll("gameJogo: Agora é a vez do Jogador 2!");
+        if (message.equals("firstPlayer")) {
+            object.put("turn", "secondPlayer");
+            object.put("gameLog","Jogo: Agora é a vez do Jogador 2!");
         }
         else {
-            sendMessageToSocket(firstPlayer, "turnplay");
-            sendMessageToSocket(secondPlayer, "turnwait");
-
-            sendMessageToAll("gameJogo: Agora é a vez do Jogador 1!");
+            object.put("turn", "firstPlayer");
+            object.put("gameLog","Jogo: Agora é a vez do Jogador 1!");
         }
+
+        sendMessageToAll(object.toJSONString());
     }
 
-    // CALCULA A POSICAO DOS JOGADORES NO TABULEIRO (EX: firstPlayer:0,secondPlayer:0)
+    // CALCULA A POSICAO DOS JOGADORES NO TABULEIRO (Exemplo de entrada: firstPlayer:1)
     private void calculatePosition(String message) {
+        JSONObject object = new JSONObject();
         String position = message.substring(message.length() - 1);
 
-        if (message.startsWith("f")) {
+        if (message.startsWith("firstPlayer")) {
             firstPlayerPosition += Integer.parseInt(position);
             if (firstPlayerPosition > 25) {
                 firstPlayerPosition = firstPlayerPosition - 26;
             }
-            sendMessageToAll("gameJogo: O Jogador 1 anda "+ position +  " casas!");
+            object.put("gameLog", "Jogo: O Jogador 1 anda "+ position +  " casas!");
         }
         else {
             secondPlayerPosition += Integer.parseInt(position);
             if (secondPlayerPosition > 25) {
                 secondPlayerPosition = secondPlayerPosition - 26;
             }
-            sendMessageToAll("gameJogo: O Jogador 2 anda "+ position +  " casas!");
+            object.put("gameLog", "Jogo: O Jogador 2 anda "+ position +  " casas!");
         }
+
+        // Envia as mensagens de atualização da posição
+        object.put("firstPlayer", playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
+        object.put("secondPlayer", playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
+        sendMessageToAll(object.toJSONString());
     }
 
-    // ATUALIZA AS LETRAS DISPONIVEIS DO JOGADOR E DE SEU OPONENTE (EX: firstPlayer:casa)
+    // ATUALIZA AS LETRAS DISPONIVEIS DO JOGADOR E DE SEU OPONENTE (Exemplo de entrada: firstPlayer:casa)
     private void updatePlayersLetters(String message) {
+        JSONObject object = new JSONObject();
         String[] messageArray = message.split(":");
 
         // Apaga as letras descritas nos arrays dos jogadores
-        if (message.startsWith("f")) {
+        if (message.startsWith("firstPlayer")) {
             secondPlayerLetters = removeWordFromLetters(messageArray[1], secondPlayerLetters);
-            sendMessageToAll("gameJogo: A palavra enviada pelo Jogador 1 é "+ messageArray[1]);
+            object.put("gameLog", "Jogo: A palavra enviada pelo Jogador 1 é "+ messageArray[1]);
         } else {
             firstPlayerLetters = removeWordFromLetters(messageArray[1], firstPlayerLetters);
-            sendMessageToAll("gameJogo: A palavra enviada pelo Jogador 2 é "+ messageArray[1]);
+            object.put("gameLog", "Jogo: A palavra enviada pelo Jogador 2 é "+ messageArray[1]);
         }
 
-        // Envia uma mensagem para os jogadores com suas letras atualizadas
-        sendLettersUpdate();
+        // Envia as mensagens de atualização das letras
+        object.put("firstPlayer", playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
+        object.put("secondPlayer", playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
+        sendMessageToAll(object.toJSONString());
     }
 
-    // ENVIA MENSAGEM DE ATUALIZACAO DE LETRAS
-    private void sendLettersUpdate() {
-        // Envia no formato wordA,B,C,D:A,B,C,D onde antes do : são as letras do jogador e após são as letras do oponente
-        sendMessageToSocket(firstPlayer, "word" + String.join(",", firstPlayerLetters) + ":" + String.join(",", secondPlayerLetters));
-        sendMessageToSocket(secondPlayer, "word" + String.join(",", secondPlayerLetters) + ":" + String.join(",", firstPlayerLetters));
+    // DESISTENCIA DO JOGO (Exemplo de entrada: firstPlayer)
+    private void sendGameOverMessages(String message) {
+        // Se foi o primeiro jogador a desistir, envia a mensagem de game over pra ele e pro oponente uma de give up
+        JSONObject object = new JSONObject();
+        object.put("giveUp", message);
+        sendMessageToAll(object.toJSONString());
+    }
+
+    // REINICIA AS VARIAVEIS DO JOGO
+    private void startGame() {
+        // Ambos jogadores comecam da primeira letra
+        firstPlayerPosition = 0;
+        secondPlayerPosition = 0;
+
+        // Ambos jogadores possuem todas as letras disponíveis
+        firstPlayerLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+        secondPlayerLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+
+        // Inicia a partida pelo jogador 1
+        if (firstPlayer != null && secondPlayer != null) {
+
+            // Mensagem de inicializacao do jogo
+            JSONObject initMessageObject = new JSONObject();
+            initMessageObject.put("init", true);
+            initMessageObject.put("turn", "firstPlayer");
+
+            // Dados do firstPlayer
+            initMessageObject.put("firstPlayer", playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
+
+            // Dados do firstPlayer
+            initMessageObject.put("secondPlayer", playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
+
+            // Mensagem do jogo
+            initMessageObject.put("gameLog", "Jogo: É a vez do Jogador 1!");
+
+            // Envia mensagem aos sockets
+            sendMessageToAll(initMessageObject.toJSONString());
+        }
+    }
+
+    // COMPACTA UM JSONARRAY COM AS INFORMACOES DOS JOGADORES (LETRAS E POSICAO)
+    private JSONArray playerInformationJSONArray(String[] letters, int position) {
+        JSONArray playerArray = new JSONArray();
+        JSONObject playerObject = new JSONObject();
+        playerObject.put("remainingLetters",  String.join(",", letters));
+        playerObject.put("boardPosition", position);
+        playerArray.add(playerObject);
+        return  playerArray;
     }
 
     // REMOVE A PALAVRA RECEBIDA DO ARRAY DE LETRAS DO OPONENTE
@@ -209,44 +255,5 @@ public class Server {
             }
         }
         return list.toArray(new String[0]);
-    }
-
-    // REINICIA AS VARIAVEIS DO JOGO
-    private void startGame() {
-        // Ambos jogadores comecam da primeira letra
-        firstPlayerPosition = 0;
-        secondPlayerPosition = 0;
-
-        // Ambos jogadores possuem todas as letras disponíveis
-        firstPlayerLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-        secondPlayerLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-
-        // Inicia a partida pelo jogador 1
-        if (firstPlayer != null && secondPlayer != null) {
-            sendMessageToAll("init");
-
-            // Define quem espera e quem aguarda, neste caso o jogador firstPlayer inicia a partida
-            sendMessageToSocket(firstPlayer, "turnplay");
-            sendMessageToSocket(secondPlayer, "turnwait");
-
-            // Inicializa os jogadores com todas as letras disponiveis e envia para eles suas letras
-            sendLettersUpdate();
-
-            // Avisa aos jogadores
-            sendMessageToAll("dicefirstPlayer:" + firstPlayerPosition + "," + "secondPlayer:" + secondPlayerPosition);
-            sendMessageToAll("gameJogo: É a vez do Jogador 1");
-        }
-    }
-
-    // DESISTENCIA DO JOGO (EX: overfirstPlayer)
-    private void sendGameOverMessages(String message) {
-        // Se foi o primeiro jogador a desistir, envia a mensagem de game over pra ele e pro oponente uma de give up
-        if (message.startsWith("f")) {
-            sendMessageToSocket(firstPlayer, "over");
-            sendMessageToSocket(secondPlayer, "gvup");
-        } else {
-            sendMessageToSocket(secondPlayer, "over");
-            sendMessageToSocket(firstPlayer, "gvup");
-        }
     }
 }
