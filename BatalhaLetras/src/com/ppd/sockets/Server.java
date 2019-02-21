@@ -37,6 +37,7 @@ public class Server {
                 if (firstPlayer == null) {
                     firstPlayer = clientSocket;
                 } else if (secondPlayer == null) {
+
                     secondPlayer = clientSocket;
                 }
 

@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Arrays;
 
 public class PlayerClient {
-    static String firstPlayerIdentifier = "Kariny";
-    static String secondPlayerIdentifier = "Cidcley";
+    static String firstPlayerIdentifier = "P1";
+    static String secondPlayerIdentifier = "P2";
 
     String playerName;
     Board board;
