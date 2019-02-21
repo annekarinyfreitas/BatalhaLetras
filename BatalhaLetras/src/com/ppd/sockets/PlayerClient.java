@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.Arrays;
 
 public class PlayerClient {
+    static String firstPlayerIdentifier = "Kariny";
+    static String secondPlayerIdentifier = "Cidcley";
+
     String playerName;
     Board board;
 
@@ -24,8 +27,8 @@ public class PlayerClient {
     Scanner clientReader;
 
     public static void main(String[] args) {
-        new PlayerClient("firstPlayer");
-        new PlayerClient("secondPlayer");
+        new PlayerClient(PlayerClient.firstPlayerIdentifier);
+        new PlayerClient(PlayerClient.secondPlayerIdentifier);
     }
 
     public PlayerClient(String playerName) {
@@ -119,13 +122,13 @@ public class PlayerClient {
                     }
 
                     // POSICIONAMENTO DOS JOGADORES NO TABULEIRO E ATUALIZACAO DAS LETRAS RESTANTES
-                    if (receivedObject.get("firstPlayer") != null && receivedObject.get("secondPlayer") != null) {
-                        updatePlayersStatus((JSONArray) receivedObject.get("firstPlayer"), (JSONArray) receivedObject.get("secondPlayer"));
+                    if (receivedObject.get(PlayerClient.firstPlayerIdentifier) != null && receivedObject.get(PlayerClient.secondPlayerIdentifier) != null) {
+                        updatePlayersStatus((JSONArray) receivedObject.get(PlayerClient.firstPlayerIdentifier), (JSONArray) receivedObject.get(PlayerClient.secondPlayerIdentifier));
                     }
 
                     // DESISTENCIA DO JOGO
                     if (receivedObject.get("giveUp") != null) {
-                        if (receivedObject.get("giveUp") .toString().equals(playerName)) {
+                        if (receivedObject.get("giveUp").toString().equals(playerName)) {
                             playerGaveUpGame();
                         } else {
                             otherPlayerGaveUpGame();
@@ -204,7 +207,7 @@ public class PlayerClient {
         JSONObject object = new JSONObject();
 
         // Formato firstPlayer:casa
-        object.put("playedWord", playerName + ":" + board.selectedWord.getText());
+        object.put("playedWord", playerName + ":" + board.selectedWord.getText() + " ");
         board.selectedWord.setText("");
         board.selectedWord.requestFocus();
         board.sendGameWordButton.setEnabled(false);
@@ -252,13 +255,12 @@ public class PlayerClient {
     // ATUALIZA A POSICAO DOS JOGADORES NO TABULEIRO
     private void updateAllPlayersPosition(String firstPlayerPosition, String secondPlayerPosition) {
         board.resetLetters();
-        updatePosition("firstPlayer", Integer.parseInt(firstPlayerPosition));
-        updatePosition("secondPlayer", Integer.parseInt(secondPlayerPosition));
+        updatePosition(PlayerClient.firstPlayerIdentifier, Integer.parseInt(firstPlayerPosition));
+        updatePosition(PlayerClient.secondPlayerIdentifier, Integer.parseInt(secondPlayerPosition));
     }
 
     private void updatePosition(String playerName, int position) {
-        String playerSymbol = playerName.equals("firstPlayer") ? "(1)" : "(2)";
-        board.boardLetters[position].setText(board.boardLetters[position].getText() + " "+ playerSymbol);
+        board.boardLetters[position].setText(board.boardLetters[position].getText() + " "+ playerSymbol(playerName));
     }
 
     // ATUALIZA AS LETRAS DISPONIVEIS
@@ -266,13 +268,17 @@ public class PlayerClient {
         List <String> firstPlayerLettersList =  Arrays.asList(firstPlayerLetters.split(","));
         List <String> secondPlayerLettersList =  Arrays.asList(secondPlayerLetters.split(","));
 
-        if (playerName.equals("firstPlayer")) {
+        if (playerName.equals(PlayerClient.firstPlayerIdentifier)) {
             board.updateGameLetters(firstPlayerLettersList, board.myGameLetters);
             board.updateGameLetters(secondPlayerLettersList, board.oponentsGameLetters);
         } else {
             board.updateGameLetters(secondPlayerLettersList, board.myGameLetters);
             board.updateGameLetters(firstPlayerLettersList, board.oponentsGameLetters);
         }
+    }
+
+    private String playerSymbol(String playerName) {
+        return "("+ playerName.substring(0, Math.min(playerName.length(), 3)) + ")";
     }
 
     // DESISTENCIA DO JOGO

@@ -6,10 +6,7 @@ import org.json.simple.parser.JSONParser;
 import java.net.Socket;
 import java.net.ServerSocket;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.List;
+import java.util.*;
 
 public class Server {
     ServerSocket server;
@@ -134,13 +131,13 @@ public class Server {
     private void passTurn(String message) {
         JSONObject object = new JSONObject();
 
-        if (message.equals("firstPlayer")) {
-            object.put("turn", "secondPlayer");
-            object.put("gameLog","Jogo: Agora é a vez do Jogador 2!");
+        if (message.equals(PlayerClient.firstPlayerIdentifier)) {
+            object.put("turn", PlayerClient.secondPlayerIdentifier);
+            object.put("gameLog","Jogo: Agora é a vez do (a) " + PlayerClient.secondPlayerIdentifier);
         }
         else {
-            object.put("turn", "firstPlayer");
-            object.put("gameLog","Jogo: Agora é a vez do Jogador 1!");
+            object.put("turn", PlayerClient.firstPlayerIdentifier);
+            object.put("gameLog","Jogo: Agora é a vez do (a) " + PlayerClient.firstPlayerIdentifier);
         }
 
         sendMessageToAll(object.toJSONString());
@@ -151,24 +148,24 @@ public class Server {
         JSONObject object = new JSONObject();
         String position = message.substring(message.length() - 1);
 
-        if (message.startsWith("firstPlayer")) {
+        if (message.startsWith(PlayerClient.firstPlayerIdentifier)) {
             firstPlayerPosition += Integer.parseInt(position);
             if (firstPlayerPosition > 25) {
                 firstPlayerPosition = firstPlayerPosition - 26;
             }
-            object.put("gameLog", "Jogo: O Jogador 1 anda "+ position +  " casas!");
+            object.put("gameLog", "Jogo: "+ PlayerClient.firstPlayerIdentifier + " anda "+ position +  " casas!");
         }
         else {
             secondPlayerPosition += Integer.parseInt(position);
             if (secondPlayerPosition > 25) {
                 secondPlayerPosition = secondPlayerPosition - 26;
             }
-            object.put("gameLog", "Jogo: O Jogador 2 anda "+ position +  " casas!");
+            object.put("gameLog", "Jogo: "+ PlayerClient.secondPlayerIdentifier + " anda "+ position +  " casas!");
         }
 
         // Envia as mensagens de atualização da posição
-        object.put("firstPlayer", playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
-        object.put("secondPlayer", playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
+        object.put(PlayerClient.firstPlayerIdentifier, playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
+        object.put(PlayerClient.secondPlayerIdentifier, playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
         sendMessageToAll(object.toJSONString());
     }
 
@@ -178,26 +175,27 @@ public class Server {
         String[] messageArray = message.split(":");
 
         // Apaga as letras descritas nos arrays dos jogadores
-        if (message.startsWith("firstPlayer")) {
+        if (message.startsWith(PlayerClient.firstPlayerIdentifier)) {
             secondPlayerLetters = removeWordFromLetters(messageArray[1], secondPlayerLetters);
             //Detecta a vitoria
             if (secondPlayerLetters.length == 0) {
-                object.put("win", "firstPlayer");
+                object.put("win", PlayerClient.firstPlayerIdentifier);
             }
 
-            object.put("gameLog", "Jogo: A palavra enviada pelo Jogador 1 é "+ messageArray[1]);
+            object.put("gameLog", "Jogo: A palavra enviada por " + PlayerClient.firstPlayerIdentifier +" é "+ messageArray[1]);
         } else {
             firstPlayerLetters = removeWordFromLetters(messageArray[1], firstPlayerLetters);
             //Detecta a vitoria
             if (secondPlayerLetters.length == 0) {
-                object.put("win", "secondPlayer");
+                object.put("win", PlayerClient.secondPlayerIdentifier);
             }
-            object.put("gameLog", "Jogo: A palavra enviada pelo Jogador 2 é "+ messageArray[1]);
+
+            object.put("gameLog", "Jogo: A palavra enviada por " + PlayerClient.secondPlayerIdentifier +" é "+ messageArray[1]);
         }
 
         // Envia as mensagens de atualização das letras
-        object.put("firstPlayer", playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
-        object.put("secondPlayer", playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
+        object.put(PlayerClient.firstPlayerIdentifier, playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
+        object.put(PlayerClient.secondPlayerIdentifier, playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
         sendMessageToAll(object.toJSONString());
     }
 
@@ -221,20 +219,19 @@ public class Server {
 
         // Inicia a partida pelo jogador 1
         if (firstPlayer != null && secondPlayer != null) {
-
             // Mensagem de inicializacao do jogo
             JSONObject initMessageObject = new JSONObject();
             initMessageObject.put("init", true);
-            initMessageObject.put("turn", "firstPlayer");
+            initMessageObject.put("turn", PlayerClient.firstPlayerIdentifier);
 
             // Dados do firstPlayer
-            initMessageObject.put("firstPlayer", playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
+            initMessageObject.put(PlayerClient.firstPlayerIdentifier, playerInformationJSONArray(firstPlayerLetters, firstPlayerPosition));
 
             // Dados do firstPlayer
-            initMessageObject.put("secondPlayer", playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
+            initMessageObject.put(PlayerClient.secondPlayerIdentifier, playerInformationJSONArray(secondPlayerLetters, secondPlayerPosition));
 
             // Mensagem do jogo
-            initMessageObject.put("gameLog", "Jogo: É a vez do Jogador 1!");
+            initMessageObject.put("gameLog", "Jogo: É a vez do(a) "+ PlayerClient.firstPlayerIdentifier);
 
             // Envia mensagem aos sockets
             sendMessageToAll(initMessageObject.toJSONString());
