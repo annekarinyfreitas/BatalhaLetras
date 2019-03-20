@@ -28,7 +28,7 @@ public class RmiClient {
         // Se registra na localmente e recupera o stub do servidor
         try {
             Registry registry = LocateRegistry.getRegistry("127.0.0.1");
-            ServerInterface stub = (ServerInterface) registry.lookup("MyRemoteObject");
+            ServerInterface stub = (ServerInterface) registry.lookup("BatalhaLetras");
 
             ClientInterface remoteClient1 = new ClientRemoteObject(RmiClient.firstPlayerIdentifier, stub);
             ClientInterface remoteClient2 = new ClientRemoteObject(RmiClient.secondPlayerIdentifier, stub);
@@ -162,6 +162,18 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
         }
     }
 
+    private void updatePosition(String playerName, int position) {
+        board.boardLetters[position].setText(board.boardLetters[position].getText() + " "+ playerSymbol(playerName));
+    }
+
+    private String playerSymbol(String playerName) {
+        return "("+ playerName.substring(0, Math.min(playerName.length(), 3)) + ")";
+    }
+
+    /////////////////////////
+    //// METODOS DA INTERFACE
+    /////////////////////////
+
     @Override
     public void init() throws RemoteException {
         board.boardLog.setText("");
@@ -188,10 +200,6 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
         board.resetLetters();
         updatePosition(RmiClient.firstPlayerIdentifier, firstPlayerPosition);
         updatePosition(RmiClient.secondPlayerIdentifier, secondPlayerPosition);
-    }
-
-    private void updatePosition(String playerName, int position) {
-        board.boardLetters[position].setText(board.boardLetters[position].getText() + " "+ playerSymbol(playerName));
     }
 
     @Override
@@ -240,10 +248,6 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
                 }
             }
         });
-    }
-
-    private String playerSymbol(String playerName) {
-        return "("+ playerName.substring(0, Math.min(playerName.length(), 3)) + ")";
     }
 }
 
