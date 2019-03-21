@@ -2,6 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b8b8939-25ac-48f1-9b3e-3725e7f4dcae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ClientRemoteObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/RmiClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/RmiClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ServerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ServerInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ServerRemoteObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BatalhaLetrasRMI/com/ppd/rmi/ServerRemoteObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/rmi/RmiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/rmi/RmiClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/ppd/rmi/RmiServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ppd/rmi/RmiServer.java" afterDir="false" />
     </list>
@@ -22,20 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
-              <caret line="211" column="44" selection-start-line="211" selection-start-column="44" selection-end-line="211" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/RmiServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="185" column="9" lean-forward="true" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="9" />
+            <state relative-caret-position="1444">
+              <caret line="142" column="8" lean-forward="true" selection-start-line="142" selection-start-column="8" selection-end-line="143" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,22 +44,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/RmiClient.java">
+        <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/RmiServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="242" column="5" selection-start-line="242" selection-start-column="5" selection-end-line="242" selection-end-column="5" />
+            <state relative-caret-position="-2416">
+              <caret line="19" column="61" lean-forward="true" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2217#2218#0" expanded="true" />
-                <element signature="e#2266#2267#0" expanded="true" />
-                <element signature="e#2458#2459#0" expanded="true" />
-                <element signature="e#2500#2501#0" expanded="true" />
-                <element signature="e#2707#2708#0" expanded="true" />
-                <element signature="e#2753#2754#0" expanded="true" />
-                <element signature="e#2957#2958#0" expanded="true" />
-                <element signature="e#3001#3002#0" expanded="true" />
-                <element signature="e#3209#3210#0" expanded="true" />
-                <element signature="e#3254#3255#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/RmiClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1884">
+              <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2626#2627#0" expanded="true" />
+                <element signature="e#2675#2676#0" expanded="true" />
+                <element signature="e#2867#2868#0" expanded="true" />
+                <element signature="e#2909#2910#0" expanded="true" />
+                <element signature="e#3116#3117#0" expanded="true" />
+                <element signature="e#3162#3163#0" expanded="true" />
+                <element signature="e#3366#3367#0" expanded="true" />
+                <element signature="e#3410#3411#0" expanded="true" />
+                <element signature="e#3618#3619#0" expanded="true" />
+                <element signature="e#3663#3664#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,6 +90,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>updatepo</find>
+      <find>playerSymbol</find>
+      <find>firstPlayerIdentifier</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -101,15 +115,17 @@
         <option value="$PROJECT_DIR$/src/ppd/rmi/RmiClient.java" />
         <option value="$PROJECT_DIR$/src/ppd/rmi/Board.form" />
         <option value="$PROJECT_DIR$/src/com/ppd/rmi/Board.java" />
+        <option value="$PROJECT_DIR$/src/com/ppd/rmi/PlayerConnection.form" />
         <option value="$PROJECT_DIR$/src/com/ppd/rmi/RmiServer.java" />
         <option value="$PROJECT_DIR$/src/com/ppd/rmi/RmiClient.java" />
+        <option value="$PROJECT_DIR$/src/com/ppd/rmi/PlayerConnection.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="706" />
+    <option name="height" value="715" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -119,7 +135,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,18 +142,44 @@
               <item name="BatalhaLetrasRMI" type="b2602c69:ProjectViewProjectNode" />
               <item name="BatalhaLetrasRMI" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="BatalhaLetrasRMI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BatalhaLetrasRMI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BatalhaLetrasRMI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BatalhaLetrasRMI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rmi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BatalhaLetrasRMI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BatalhaLetrasRMI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rmi" type="462c0819:PsiDirectoryNode" />
+              <item name="Board" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="BatalhaLetrasRMI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BatalhaLetrasRMI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rmi" type="462c0819:PsiDirectoryNode" />
+              <item name="PlayerConnection" type="e9f4de52:FormNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="231" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553115512432" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553126649287" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -166,8 +207,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.RmiClient (1)">
-    <configuration name="RmiClient (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ppd.rmi.RmiClient" />
+    <configuration name="PlayerConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ppd.rmi.PlayerConnection" />
       <module name="BatalhaLetrasRMI" />
       <extension name="coverage">
         <pattern>
@@ -179,13 +220,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RmiClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ppd.rmi.RmiClient" />
+    <configuration name="RmiClient (1)" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ppd.rmi.RmiClient" />
       <module name="BatalhaLetrasRMI" />
-      <option name="VM_PARAMETERS" value="-Djava.security.policy=.java.policy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ppd.rmi.*" />
+          <option name="PATTERN" value="com.ppd.rmi.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -206,32 +246,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RmiServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ppd.rmi.RmiServer" />
-      <module name="BatalhaLetrasRMI" />
-      <option name="VM_PARAMETERS" value="-Djava.security.policy=.java.policy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ppd.rmi.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.RmiClient" />
-      <item itemvalue="Application.RmiServer" />
       <item itemvalue="Application.RmiServer (1)" />
       <item itemvalue="Application.RmiClient (1)" />
+      <item itemvalue="Application.PlayerConnection" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.RmiClient (1)" />
         <item itemvalue="Application.RmiServer (1)" />
-        <item itemvalue="Application.RmiClient" />
-        <item itemvalue="Application.RmiServer" />
+        <item itemvalue="Application.PlayerConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -253,17 +277,19 @@
       <workItem from="1552952344625" duration="315000" />
       <workItem from="1552952703349" duration="1888000" />
       <workItem from="1553112026733" duration="2327000" />
+      <workItem from="1553119902645" duration="55000" />
+      <workItem from="1553119962574" duration="4079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23327000" />
+    <option name="totallyTimeSpent" value="27461000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="715" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="715" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.178125" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.134375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -272,8 +298,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1884058" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.27361563" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.15297906" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2673108" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -465,10 +491,47 @@
     <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/Board.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/PlayerConnection.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/event/ActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/PlayerConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/RmiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1884">
+          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2626#2627#0" expanded="true" />
+            <element signature="e#2675#2676#0" expanded="true" />
+            <element signature="e#2867#2868#0" expanded="true" />
+            <element signature="e#2909#2910#0" expanded="true" />
+            <element signature="e#3116#3117#0" expanded="true" />
+            <element signature="e#3162#3163#0" expanded="true" />
+            <element signature="e#3366#3367#0" expanded="true" />
+            <element signature="e#3410#3411#0" expanded="true" />
+            <element signature="e#3618#3619#0" expanded="true" />
+            <element signature="e#3663#3664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="211" column="44" selection-start-line="211" selection-start-column="44" selection-end-line="211" selection-end-column="44" />
+        <state relative-caret-position="1444">
+          <caret line="142" column="8" lean-forward="true" selection-start-line="142" selection-start-column="8" selection-end-line="143" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -477,30 +540,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/RmiServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="185" column="9" lean-forward="true" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="9" />
+        <state relative-caret-position="-2416">
+          <caret line="19" column="61" lean-forward="true" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ppd/rmi/RmiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="242" column="5" selection-start-line="242" selection-start-column="5" selection-end-line="242" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2217#2218#0" expanded="true" />
-            <element signature="e#2266#2267#0" expanded="true" />
-            <element signature="e#2458#2459#0" expanded="true" />
-            <element signature="e#2500#2501#0" expanded="true" />
-            <element signature="e#2707#2708#0" expanded="true" />
-            <element signature="e#2753#2754#0" expanded="true" />
-            <element signature="e#2957#2958#0" expanded="true" />
-            <element signature="e#3001#3002#0" expanded="true" />
-            <element signature="e#3209#3210#0" expanded="true" />
-            <element signature="e#3254#3255#0" expanded="true" />
           </folding>
         </state>
       </provider>

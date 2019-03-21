@@ -15,10 +15,28 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RmiClient {
-    static String firstPlayerIdentifier = "P1";
-    static String secondPlayerIdentifier = "P2";
+    static PlayerConnection playerConnection;
 
     public static void main(String[] args) {
+        playerConnection = new PlayerConnection();
+        RmiClient.connectionEvent();
+    }
+
+    static void connectionEvent() {
+        playerConnection.conectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String ip = playerConnection.ipTextField.getText();
+                String name = playerConnection.playerNameTextField.getText();
+                RmiClient.registerToServer(ip, name);
+
+                playerConnection.frame.setVisible(false);
+                playerConnection.frame.dispose();
+            }
+        });
+    }
+
+    static void registerToServer(String ip, String playerName) {
         // Permissões de segurança
         System.setProperty("java.security.policy","file:src/.java.policy");
         if (System.getSecurityManager() == null) {
@@ -27,14 +45,11 @@ public class RmiClient {
 
         // Se registra na localmente e recupera o stub do servidor
         try {
-            Registry registry = LocateRegistry.getRegistry("127.0.0.1");
+            Registry registry = LocateRegistry.getRegistry(ip);
             ServerInterface stub = (ServerInterface) registry.lookup("BatalhaLetras");
 
-            ClientInterface remoteClient1 = new ClientRemoteObject(RmiClient.firstPlayerIdentifier, stub);
-            ClientInterface remoteClient2 = new ClientRemoteObject(RmiClient.secondPlayerIdentifier, stub);
-
-            stub.registerRemotePlayerClient(remoteClient1);
-            stub.registerRemotePlayerClient(remoteClient2);
+            ClientInterface remoteClient1 = new ClientRemoteObject(playerName, stub);
+            stub.registerRemotePlayerClient(remoteClient1, playerName);
 
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -196,10 +211,10 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
     }
 
     @Override
-    public void updatePosition(int firstPlayerPosition, int secondPlayerPosition) throws RemoteException {
+    public void updatePosition(String firstPlayerName, String secondPlayerName, int firstPlayerPosition, int secondPlayerPosition) throws RemoteException {
         board.resetLetters();
-        updatePosition(RmiClient.firstPlayerIdentifier, firstPlayerPosition);
-        updatePosition(RmiClient.secondPlayerIdentifier, secondPlayerPosition);
+        updatePosition(firstPlayerName, firstPlayerPosition);
+        updatePosition(secondPlayerName, secondPlayerPosition);
     }
 
     @Override
@@ -256,7 +271,7 @@ interface ClientInterface extends Remote {
     void init() throws RemoteException;
     void play(boolean shouldPlay) throws RemoteException;
     void updateLetters(String firstPlayerLetters, String secondPlayerLetters) throws RemoteException;
-    void updatePosition(int firstPlayerPosition, int secondPlayerPosition) throws RemoteException;
+    void updatePosition(String firstPlayerName, String secondPlayerName, int firstPlayerPosition, int secondPlayerPosition) throws RemoteException;
     void retrieveChatMessage(String message) throws RemoteException;
     void retrieveBoardMessage(String message) throws RemoteException;
     void otherPlayerGaveUpGame() throws RemoteException;

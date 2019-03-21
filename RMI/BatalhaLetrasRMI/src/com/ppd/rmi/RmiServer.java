@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RmiServer {
+    static String firstPlayerIdentifier = "";
+    static String secondPlayerIdentifier = "";
+
     public static void main(String[] args) {
         // Permissões de segurança
         System.setProperty("java.security.policy","file:src/.java.policy");
@@ -59,8 +62,8 @@ class ServerRemoteObject implements ServerInterface {
         for (int i = 0; i < this.clientInterfaces.size(); i++) {
             clientInterfaces.get(i).init();
             clientInterfaces.get(i).updateLetters(String.join(",",firstPlayerLetters), String.join(",",secondPlayerLetters));
-            clientInterfaces.get(i).updatePosition(firstPlayerPosition, secondPlayerPosition);
-            clientInterfaces.get(i).retrieveBoardMessage("É a vez do jogador " + RmiClient.firstPlayerIdentifier);
+            clientInterfaces.get(i).updatePosition(RmiServer.firstPlayerIdentifier, RmiServer.secondPlayerIdentifier, firstPlayerPosition, secondPlayerPosition);
+            clientInterfaces.get(i).retrieveBoardMessage("É a vez do jogador " + RmiServer.firstPlayerIdentifier);
         }
     }
 
@@ -84,24 +87,28 @@ class ServerRemoteObject implements ServerInterface {
     /////////////////////////
 
     @Override
-    public void registerRemotePlayerClient(ClientInterface clientInterface) throws RemoteException {
+    public void registerRemotePlayerClient(ClientInterface clientInterface, String playerName) throws RemoteException {
         if (clientInterfaces.size() < 2) {
             clientInterfaces.add(clientInterface);
+            System.out.println(playerName + " adicionado à partida");
         } else {
             System.out.println("Não é possível inserir mais que 2 jogadores na mesma partida!");
         }
 
-        if (clientInterfaces.size() == 2) {
+        if (clientInterfaces.size() == 1) {
+            RmiServer.firstPlayerIdentifier = playerName;
+        } else {
+            RmiServer.secondPlayerIdentifier = playerName;
             startGame();
         }
     }
 
     @Override
     public void calculatePosition(String playerName, int newPosition) throws RemoteException {
-        String playerIdentifier = playerName.equals(RmiClient.firstPlayerIdentifier) ? RmiClient.firstPlayerIdentifier : RmiClient.secondPlayerIdentifier;
+        String playerIdentifier = playerName.equals(RmiServer.firstPlayerIdentifier) ? RmiServer.firstPlayerIdentifier : RmiServer.secondPlayerIdentifier;
 
         // Calcula a nova posicao no tabuleiro
-        if (playerName.equals(RmiClient.firstPlayerIdentifier)) {
+        if (playerName.equals(RmiServer.firstPlayerIdentifier)) {
             firstPlayerPosition += newPosition;
             if (firstPlayerPosition > 25) {
                 firstPlayerPosition = firstPlayerPosition - 26;
@@ -116,22 +123,22 @@ class ServerRemoteObject implements ServerInterface {
         // Envia a atualização da posicao para os jogadores
         for (int i = 0; i < clientInterfaces.size(); i++) {
             clientInterfaces.get(i).retrieveBoardMessage("O jogador " + playerIdentifier + " anda " + newPosition + " casas!");
-            clientInterfaces.get(i).updatePosition(firstPlayerPosition, secondPlayerPosition);
+            clientInterfaces.get(i).updatePosition(RmiServer.firstPlayerIdentifier, RmiServer.secondPlayerIdentifier, firstPlayerPosition, secondPlayerPosition);
         }
     }
 
     @Override
     public void sendPlayerWord(String playerName, String word) throws RemoteException {
-        String playerIdentifier = playerName.equals(RmiClient.firstPlayerIdentifier) ? RmiClient.firstPlayerIdentifier : RmiClient.secondPlayerIdentifier;
+        String playerIdentifier = playerName.equals(RmiServer.firstPlayerIdentifier) ? RmiServer.firstPlayerIdentifier : RmiServer.secondPlayerIdentifier;
 
         // Apaga as letras descritas nos arrays dos jogadores
-        if (playerName.equals(RmiClient.firstPlayerIdentifier)) {
+        if (playerName.equals(RmiServer.firstPlayerIdentifier)) {
             secondPlayerLetters = removeWordFromLetters(word, secondPlayerLetters);
 
             // Detecta a vitoria do Jogador 1
             if (secondPlayerLetters.length == 0) {
                 for (int i = 0; i < this.clientInterfaces.size(); i++) {
-                    clientInterfaces.get(i).showWinnerMessage(RmiClient.firstPlayerIdentifier);
+                    clientInterfaces.get(i).showWinnerMessage(RmiServer.firstPlayerIdentifier);
                 }
             }
         } else {
@@ -140,7 +147,7 @@ class ServerRemoteObject implements ServerInterface {
             // Detecta a vitoria do Jogador 2
             if (firstPlayerLetters.length == 0) {
                 for (int i = 0; i < this.clientInterfaces.size(); i++) {
-                    clientInterfaces.get(i).showWinnerMessage(RmiClient.secondPlayerIdentifier);
+                    clientInterfaces.get(i).showWinnerMessage(RmiServer.secondPlayerIdentifier);
                 }
             }
         }
@@ -157,7 +164,7 @@ class ServerRemoteObject implements ServerInterface {
 
     @Override
     public void passTurn(String playerName) throws RemoteException {
-        if (playerName.equals(RmiClient.firstPlayerIdentifier)) {
+        if (playerName.equals(RmiServer.firstPlayerIdentifier)) {
             clientInterfaces.get(0).play(false);
             clientInterfaces.get(1).play(true);
         } else {
@@ -168,7 +175,7 @@ class ServerRemoteObject implements ServerInterface {
 
     @Override
     public void giveUpGame(String playerName) throws RemoteException {
-        if (playerName.equals(RmiClient.firstPlayerIdentifier)) {
+        if (playerName.equals(RmiServer.firstPlayerIdentifier)) {
             clientInterfaces.get(1).otherPlayerGaveUpGame();
         } else {
             clientInterfaces.get(0).otherPlayerGaveUpGame();
@@ -190,7 +197,7 @@ class ServerRemoteObject implements ServerInterface {
 
 // INTERFACE
 interface ServerInterface extends Remote {
-    void registerRemotePlayerClient(ClientInterface clientInterface) throws RemoteException;
+    void registerRemotePlayerClient(ClientInterface clientInterface, String playerName) throws RemoteException;
     void calculatePosition(String playerName, int newPosition) throws RemoteException;
     void sendPlayerWord(String playerName, String word) throws RemoteException;
     void passTurn(String playerName) throws RemoteException;
