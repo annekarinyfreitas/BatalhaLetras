@@ -13,6 +13,7 @@ public class PlayerConnection {
         frame = new JFrame("Conexao do Jogador");
         frame.setContentPane(mainView);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
 

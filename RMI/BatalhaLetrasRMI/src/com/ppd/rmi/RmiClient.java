@@ -52,10 +52,24 @@ public class RmiClient {
             stub.registerRemotePlayerClient(remoteClient1, playerName);
 
         } catch (RemoteException e) {
+            presentExceptionAlert();
             e.printStackTrace();
         } catch (NotBoundException e) {
+            presentExceptionAlert();
             e.printStackTrace();
         }
+    }
+
+    static void presentExceptionAlert() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                int input = JOptionPane.showOptionDialog(playerConnection.frame, "Não foi possível localizar o servico no endereco digitado.\nExecute novamente a classe RmiClient.java", "Atenção", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                if (input == JOptionPane.OK_OPTION || input == JOptionPane.CLOSED_OPTION) {
+                    playerConnection.frame.dispatchEvent(new WindowEvent(playerConnection.frame, WindowEvent.WINDOW_CLOSING));
+                }
+            }
+        });
     }
 }
 
@@ -69,6 +83,12 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
         this.playerName = playerName;
         this.serverInterface = serverInterface;
         this.board = new Board(playerName);
+
+        board.sendGameWordButton.setEnabled(false);
+        board.sendMessageButton.setEnabled(false);
+        board.diceButton.setEnabled(false);
+        board.restartPlayButton.setEnabled(false);
+        board.giveUpGameButton.setEnabled(false);
 
         // EVENTO PARA ENVIAR MENSAGEM DO CHAT
         board.sendMessageButton.addActionListener(new ActionListener() {
@@ -189,6 +209,11 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
     public void init() throws RemoteException {
         board.boardLog.setText("");
         board.receivedText.setText("");
+        board.sendGameWordButton.setEnabled(true);
+        board.sendMessageButton.setEnabled(true);
+        board.diceButton.setEnabled(true);
+        board.restartPlayButton.setEnabled(true);
+        board.giveUpGameButton.setEnabled(true);
     }
 
     @Override

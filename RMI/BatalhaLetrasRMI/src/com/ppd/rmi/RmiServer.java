@@ -56,11 +56,12 @@ class ServerRemoteObject implements ServerInterface {
         secondPlayerLetters = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
         // Inicializacao do jogo e do turno
+        clientInterfaces.get(0).init();
         clientInterfaces.get(0).play(true);
+        clientInterfaces.get(1).init();
         clientInterfaces.get(1).play(false);
 
         for (int i = 0; i < this.clientInterfaces.size(); i++) {
-            clientInterfaces.get(i).init();
             clientInterfaces.get(i).updateLetters(String.join(",",firstPlayerLetters), String.join(",",secondPlayerLetters));
             clientInterfaces.get(i).updatePosition(RmiServer.firstPlayerIdentifier, RmiServer.secondPlayerIdentifier, firstPlayerPosition, secondPlayerPosition);
             clientInterfaces.get(i).retrieveBoardMessage("É a vez do jogador " + RmiServer.firstPlayerIdentifier);
