@@ -145,17 +145,13 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
     private void sendGameWord() {
         try {
             // Envia para o servidor a palavra jogada
-            serverInterface.sendPlayerWord(playerName,board.selectedWord.getText() );
+            serverInterface.asksToAcceptWord(playerName,board.selectedWord.getText());
 
-            // Passa o turno
-            serverInterface.passTurn(playerName);
+            board.selectedWord.setText("");
+            board.selectedWord.requestFocus();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
-        board.selectedWord.setText("");
-        board.selectedWord.requestFocus();
-        board.sendGameWordButton.setEnabled(false);
     }
 
     // DESISTE DO JOGO
@@ -264,6 +260,46 @@ class ClientRemoteObject extends UnicastRemoteObject implements ClientInterface 
             }
         });
     }
+
+    @Override
+    public void retrievePlayedWord(String playerName, String word) throws RemoteException {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                String[] options = {"Sim", "Não"};
+                JOptionPane optionPane = new JOptionPane();
+                int x = optionPane.showOptionDialog(board.frame, "O Jogador " + playerName + " enviou a palavra " + word + ".\nVocê aceita?",
+                        "Palavra",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+                if (x == 0) {
+                    try {
+                        // Envia para o servidor a palavra jogada
+                        serverInterface.acceptedFromPlayer(playerName, word);
+                        serverInterface.sendPlayerWord(playerName,word);
+
+                        // Passa o turno
+                        serverInterface.passTurn(playerName);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    board.sendGameWordButton.setEnabled(false);
+                    optionPane.setVisible(false);
+                } else {
+                    try {
+                        serverInterface.rejectedWordFromPlayer(playerName, word);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    optionPane.setVisible(false);
+                }
+
+
+            }
+        });
+    }
 }
 
 // INTERFACE
@@ -276,5 +312,6 @@ interface ClientInterface extends Remote {
     void retrieveBoardMessage(String message) throws RemoteException;
     void otherPlayerGaveUpGame() throws RemoteException;
     void showWinnerMessage(String playerName) throws RemoteException;
+    void retrievePlayedWord(String playerName, String word) throws RemoteException;
 }
 

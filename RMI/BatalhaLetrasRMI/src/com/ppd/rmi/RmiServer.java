@@ -154,7 +154,7 @@ class ServerRemoteObject implements ServerInterface {
 
         // Envia a mensagem que uma palavra foi jogada
         for (int i = 0; i < this.clientInterfaces.size(); i++) {
-            clientInterfaces.get(i).retrieveBoardMessage("A palavra enviada por " + playerIdentifier + " é " + word);
+            clientInterfaces.get(i).retrieveBoardMessage("A palavra jogada por " + playerIdentifier + " é " + word);
         }
 
         // Atualiza as letras removidas dos tabuleiros dos jogadores
@@ -193,6 +193,29 @@ class ServerRemoteObject implements ServerInterface {
             clientInterfaces.get(i).retrieveChatMessage(message);
         }
     }
+
+    @Override
+    public void asksToAcceptWord(String playerName, String word) throws RemoteException {
+        if (playerName.equals(RmiServer.firstPlayerIdentifier)) {
+            clientInterfaces.get(1).retrievePlayedWord(playerName, word);
+        } else {
+            clientInterfaces.get(0).retrievePlayedWord(playerName, word);
+        }
+    }
+
+    @Override
+    public void acceptedFromPlayer(String playerName, String word) throws RemoteException {
+        for (int i = 0; i < this.clientInterfaces.size(); i++) {
+            clientInterfaces.get(i).retrieveBoardMessage("A palavra "+ word +" do jogador " + playerName + " foi aceita!");
+        }
+    }
+
+    @Override
+    public void rejectedWordFromPlayer(String playerName, String word) throws RemoteException {
+        for (int i = 0; i < this.clientInterfaces.size(); i++) {
+            clientInterfaces.get(i).retrieveBoardMessage("A palavra "+ word +" do jogador " + playerName + " foi rejeitada!");
+        }
+    }
 }
 
 // INTERFACE
@@ -204,4 +227,7 @@ interface ServerInterface extends Remote {
     void giveUpGame(String playerName) throws RemoteException;
     void restartGame(String playerName) throws RemoteException;
     void sendChatMessage(String message) throws RemoteException;
+    void asksToAcceptWord(String playerName, String word) throws RemoteException;
+    void acceptedFromPlayer(String playerName, String word) throws RemoteException;
+    void rejectedWordFromPlayer(String playerName, String word) throws RemoteException;
 }
