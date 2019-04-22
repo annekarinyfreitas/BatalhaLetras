@@ -1,0 +1,70 @@
+//ppdPecas.idl
+
+module PPDCorba {
+
+	// Forward decls:
+	//
+	interface Part; // uma "peça"
+	interface PartRepository; // um repositório de informações sobre peças
+
+
+	// A interface "peça" 
+	//
+	interface Part {
+		// Cada peça tem um código, um nome e uma descrição: 
+		//
+		readonly attribute string code; 	   // código
+		readonly attribute string name; 	   // nome
+		readonly attribute string description; // descrição 
+	};
+	
+	// Para a operação PartRepository::getPartList(): 
+	//
+	struct PartListItem {
+		string code; // código da peça
+		string name; // nome da peça 
+	};
+	typedef sequence<PartListItem> PartList;
+
+
+	// A operação PartRepository::getPartInfo() retorna esta estrutura
+	// (os campos `code', `name' e `description' tem a finalidade de evitar
+	// acessos remotos à peça referenciada pelo campo `part'): 
+	//
+	struct PartInfo {
+		PPDCorba::Part part; // a peça
+		string code; // código da peça
+		string name; // nome da peça
+		string description; // descrição
+	};
+
+	// Exceção levantada pelas operações de busca de peça num repositório: //
+	exception NoSuchPart {
+		string partCode; 
+	};
+
+
+	// A interface "repositório de informações sobre peças": 
+	//
+	interface PartRepository {
+		// Atributos:
+		//
+		readonly attribute string name;   // nome do repositório 
+		readonly attribute long numParts; // numero de peças registradas
+										  // neste repositório
+
+		// Operação que adiciona ao repositório os dados de uma peça 
+		// e gera um novo código de peça
+		//
+		Part addPart(in string name, in string description);
+		
+		// Operações de busca de peça no repositório:
+		//
+		Part getPart(in string code) raises(NoSuchPart); 
+		PartInfo getPartInfo(in string code) raises(NoSuchPart);
+		
+		// Operação que lista as peças no repositório: 
+		//
+		PartList getPartList();
+	}; 
+};
