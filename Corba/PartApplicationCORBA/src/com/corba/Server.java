@@ -16,13 +16,12 @@ public class Server {
 			Object objPoa = orb.resolve_initial_references("RootPOA");
 			POA rootPOA = POAHelper.narrow(objPoa);
 			
-			// Nome do servidor que recebe por argumento -> O que fazer para inicializar outro servidor?
 			String serverName = args[2];
 			
 			Object obj = orb.resolve_initial_references("NameService");
 			NamingContext naming = NamingContextHelper.narrow(obj);
 
-			PartRepositoryImpl partRepository = new PartRepositoryImpl();
+			PartRepositoryImpl partRepository = new PartRepositoryImpl(serverName, rootPOA);
 			Object objRef = rootPOA.servant_to_reference(partRepository);
 
 			NameComponent[] name = { new NameComponent(serverName, "") };

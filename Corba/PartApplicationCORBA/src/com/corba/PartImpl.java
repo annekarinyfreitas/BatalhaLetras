@@ -5,6 +5,12 @@ public class PartImpl extends PartPOA {
 	String code;
 	String name;
 	String description;
+	
+	public PartImpl(String code, String name, String description) {
+		this.code = code;
+		this.name = name;
+		this.description = description;
+	}
 
 	@Override
 	public String code() {

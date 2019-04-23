@@ -1,81 +1,110 @@
 package com.corba;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
-import org.omg.CORBA.ORB;
+import org.omg.PortableServer.POA;
 import PPDCorba.*;
 
 public class PartRepositoryImpl extends PartRepositoryPOA {
-	List <PartInfo> listPartInfo = new ArrayList <PartInfo>();
-	int currentCode = 0;
+	private String serverName = null;
+	private Hashtable<String, PartImpl> parts = new Hashtable<String, PartImpl>();
+	private Part part = null;
+	private POA poaRef = null;
+	private int currentCode = 0;
+
+	// Construtor do repositorio que recebe o nome e o POA
+	public PartRepositoryImpl(String name, POA poaRef) {
+		super();    
+		try {    
+			serverName = name; 
+			this.poaRef = poaRef;    
+		}catch(Exception e) {
+			System.out.println("Erro ao inicializar PartRepository");
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public String name() {
-		return "";
+		return serverName;
 	}
 
 	@Override
 	public int numParts() {
-		return listPartInfo.size();
+		return parts.size();
 	}
 
 	@Override
 	public Part addPart(String name, String description) {
-		System.out.println("Entrou no Add part");
-		
 		try {
-			// Part
-			PartLocal partLocal = new PartLocal(Integer.toString(currentCode), name, description);
-			System.out.println("Inicializou um PartLocal");
-			
-			PartInfo partInfo = new PartInfo(partLocal, Integer.toString(currentCode), name, description);
-			System.out.println("Inicializou um PartInfo");
-			
-			listPartInfo.add(partInfo);
-			System.out.println("Adicionou no array um PartInfo");
-			
+			// Codigo
+			String codeStr = Integer.toString(currentCode);
 			currentCode += 1;
 
-			return (Part) partLocal;
+			// Inicializa um partImpl
+			PartImpl partImpl = (PartImpl) parts.get(codeStr);		
+			partImpl = new PartImpl(codeStr, name, description);
 			
+			// Pega a referencia do objeto Part
+			org.omg.CORBA.Object partRef = poaRef.servant_to_reference(partImpl);	
+			part = PartHelper.narrow(partRef);
+
+			// Salva no dicionario
+			parts.put(codeStr, partImpl);
+
+			return part;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
 
 	@Override
 	public Part getPart(String code) throws NoSuchPart {
-		for (PartInfo info: listPartInfo) {
-			if (info.code == code) {
-				return info.part;
-			}
+		try {
+			PartImpl partImpl = (PartImpl) parts.get(code);
+			
+			// Pega a referencia do objeto Part
+			org.omg.CORBA.Object partRef = poaRef.servant_to_reference(partImpl);
+			part = PartHelper.narrow(partRef);
+			
+			return part;
+			
+		} catch (Exception e) {
+			System.out.println("Peca nao encontrada no repositorio");
+			throw new NoSuchPart(code);
 		}
-		
-		return null;
 	}
 
 	@Override
 	public PartInfo getPartInfo(String code) throws NoSuchPart {
-		for (PartInfo info: listPartInfo) {
-			if (info.code == code) {
-				return info;
-			}
+		try {
+			part = getPart(code);
+			PartInfo partInfo = new PartInfo(part, part.code(), part.name(), part.description());
+			
+			return partInfo;
+			
+		} catch (Exception e) {
+			System.out.println("Peca nao encontrada no repositorio");
+			throw new NoSuchPart(code);
 		}
-		return null;
 	}
 
 	@Override
 	public PartListItem[] getPartList() {
-		List <PartListItem> listItems = new ArrayList<PartListItem>();
-		PartListItem[] items = new PartListItem[listPartInfo.size()];
+		List <PartImpl> partImpls = new ArrayList<>();
+		partImpls.addAll(parts.values());
 		
-		for (PartInfo info: listPartInfo) {
-			PartListItem item = new PartListItem(info.code, info.name);
+		List <PartListItem> listItems = new ArrayList<PartListItem>();
+		PartListItem[] items = new PartListItem[partImpls.size()];
+
+		for (PartImpl part: partImpls) {
+			PartListItem item = new PartListItem(part.code, part.name);
 			listItems.add(item);
 		}
-		
+
 		return listItems.toArray(items);
 	}
 
