@@ -4,6 +4,6 @@
 Para executar o jogo Batalha das Letras é necessário executar primeiro a classe Server e depois a classe PlayerClient.
 Os executáveis estão na pasta Executaveis.
 
-# PartApplication
-Em andamento.
+# PartApplication - CORBA
+Um sistema de controle de peças em servidores que contém repositórios. 
 
