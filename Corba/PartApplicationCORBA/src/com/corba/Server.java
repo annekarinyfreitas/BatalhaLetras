@@ -15,9 +15,9 @@ public class Server {
 
 			Object objPoa = orb.resolve_initial_references("RootPOA");
 			POA rootPOA = POAHelper.narrow(objPoa);
-			
+
 			String serverName = args[2];
-			
+
 			Object obj = orb.resolve_initial_references("NameService");
 			NamingContext naming = NamingContextHelper.narrow(obj);
 
