@@ -55,7 +55,7 @@ public class ServerLog {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblLeilo = new JLabel("Leilão");
@@ -91,7 +91,6 @@ public class ServerLog {
 		
 		// Já deixa salvo o space para os clientes
 		lookupSpace();
-		
 		writeNewLeilao();
 	}
 	

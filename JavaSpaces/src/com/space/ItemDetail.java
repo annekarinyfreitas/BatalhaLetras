@@ -11,28 +11,20 @@ import javax.swing.JScrollPane;
 
 public class ItemDetail {
 
-	private JFrame frame;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ItemDetail window = new ItemDetail();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	JFrame frame;
+	private JLabel lblItem;
+	private JLabel lblVendedor;
+	private Item item;
+	private JTextArea publicTextArea;
+	private JTextArea privateTextArea;
+	private String clientName;
 
 	/**
 	 * Create the application.
 	 */
-	public ItemDetail() {
+	public ItemDetail(Item item, String clientName) {
+		this.item = item;
+		this.clientName = clientName;
 		initialize();
 	}
 
@@ -43,7 +35,7 @@ public class ItemDetail {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 385, 313);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblPblicos = new JLabel("Públicos");
@@ -54,12 +46,12 @@ public class ItemDetail {
 		lblPrivados.setBounds(257, 58, 61, 16);
 		frame.getContentPane().add(lblPrivados);
 		
-		JLabel lblItem = new JLabel("Item :");
-		lblItem.setBounds(17, 6, 61, 16);
+		lblItem = new JLabel("Item :");
+		lblItem.setBounds(17, 6, 362, 16);
 		frame.getContentPane().add(lblItem);
 		
-		JLabel lblVendedor = new JLabel("Vendedor : ");
-		lblVendedor.setBounds(17, 30, 71, 16);
+		lblVendedor = new JLabel("Vendedor : ");
+		lblVendedor.setBounds(17, 30, 362, 16);
 		frame.getContentPane().add(lblVendedor);
 		
 		JSeparator separator = new JSeparator();
@@ -72,6 +64,7 @@ public class ItemDetail {
 		
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
+		publicTextArea = textArea;
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(210, 82, 164, 203);
@@ -79,5 +72,29 @@ public class ItemDetail {
 		
 		JTextArea textArea_1 = new JTextArea();
 		scrollPane_1.setViewportView(textArea_1);
+		privateTextArea = textArea_1;
+		
+		this.lblItem.setText("Item: " + item.description);
+		this.lblVendedor.setText("Vendedor: " + item.author);
+		
+		updateOffers();
+	}
+	
+	private String updateOffers() {
+		String r = "";
+		
+		if (item.offers != null && item.offers.isEmpty() == false) {
+			for (Offer o: item.offers) {
+				if (o.isPublic == "1") {
+					publicTextArea.setText(publicTextArea.getText() + "Autor: " + o.author + "| Valor: " + o.value + "\n");
+				} else {
+					if (item.author.equals(clientName) || o.author.equals(clientName)) {
+						privateTextArea.setText(privateTextArea.getText() + "Autor: " + o.author + "| Valor: " + o.value + "\n");
+					}
+				}
+			}
+		}
+		
+		return r;
 	}
 }
